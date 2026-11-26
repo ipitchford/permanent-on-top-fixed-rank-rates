@@ -1,0 +1,66 @@
+# SPDX-License-Identifier: MIT
+name: Replay
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+env:
+  PYTHONDONTWRITEBYTECODE: "1"
+jobs:
+  replay:
+    name: Manifest; check program under python -O; output comparison; negative control
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check MANIFEST.sha256
+        run: sha256sum -c MANIFEST.sha256
+      - name: Install pinned packages
+        run: python3 -m pip install -r requirements.txt
+      - name: Run the program in a fresh copy and compare with the shipped output
+        run: |
+          D="$RUNNER_TEMP/pkg"; mkdir -p "$D/results"; cp -R code "$D/"; cd "$D"
+          python3 -I -c 'import sys, numpy, mpmath; print(sys.version, numpy.__version__, mpmath.__version__)'
+          set -e
+          python3 -I -B -O code/verify_exp_rates.py --output results/verification.json | tee out.txt
+          grep -q "ALL CHECKS PASSED" out.txt
+          test "$(grep -c '^PASS ' out.txt)" = 28
+          SHIPPED="$GITHUB_WORKSPACE/results/verification.json" python3 -I - <<'PY'
+          import json, os, sys
+          # Comparison policy (also in README.md, ENVIRONMENT.txt and REPLAY_RECEIPT.md): the "environment" field is
+          # excluded (it records interpreter and platform); check names and pass flags, the failure list, every string
+          # (including all exact rationals such as 102469/74115) and every integer must match exactly; floating-point
+          # fields (Ryser values, ratios printed as floats, random-configuration ratios) must agree within absolute
+          # 1e-12 or relative 1e-9. The free-text "detail" of each check is not compared (it may print floats).
+          def diffs(a, b, path=''):
+              if isinstance(a, dict) and isinstance(b, dict):
+                  if a.keys() != b.keys(): return [(path, 'keys')]
+                  return [d for k in a for d in diffs(a[k], b[k], f'{path}/{k}')]
+              if isinstance(a, list) and isinstance(b, list):
+                  if len(a) != len(b): return [(path, 'length')]
+                  return [d for i, (x, y) in enumerate(zip(a, b)) for d in diffs(x, y, f'{path}[{i}]')]
+              if isinstance(a, float) and isinstance(b, float):
+                  return [] if abs(a - b) <= max(1e-12, 1e-9 * max(abs(a), abs(b))) else [(path, a, b)]
+              return [] if (type(a) is type(b) and a == b) else [(path, a, b)]
+          a = json.load(open(os.environ['SHIPPED'])); b = json.load(open('results/verification.json'))
+          for x in (a, b):
+              x.pop('environment')
+              for c in x['checks']: c.pop('detail')
+          if b['failures'] or not all(c['pass'] for c in b['checks']): sys.exit('a check failed')
+          d = diffs(a, b)
+          for row in d: print('DIFF', row)
+          if d: sys.exit('output differs beyond the declared policy')
+          print('verification.json matches the shipped output under the declared policy')
+          PY
+      - name: Negative control (tetrahedral ratio 102469/74115 changed to 102470/74115 must fail under python -O)
+        run: |
+          N="$RUNNER_TEMP/neg"; mkdir -p "$N/results"; cp -R code "$N/"; cd "$N"
+          sed -i 's/F(102469, 74115)/F(102470, 74115)/' code/verify_exp_rates.py
+          grep -q 'F(102470, 74115)' code/verify_exp_rates.py
+          if python3 -I -B -O code/verify_exp_rates.py --output results/verification.json > out.txt 2>&1; then echo "changed value not detected"; exit 1; fi
+          grep FAIL out.txt; echo "negative control detected"
+      - name: Working tree unchanged
+        run: test -z "$(git status --porcelain)"

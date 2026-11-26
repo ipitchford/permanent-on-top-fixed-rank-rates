@@ -1,0 +1,16 @@
+Release replay environment (26 November 2026, macOS arm64 host)
+Interpreter (printed inside the run, not assumed): `uv run --python 3.12 --with numpy==2.3.5 --with mpmath==1.3.0`
+resolved to CPython 3.12.11 with numpy 2.3.5 and mpmath 1.3.0.
+Packages: requirements.txt. No compiler. Working directory: package root. Flags: python3 -I -B -O. Run time: about
+70 seconds, one CPU. Deterministic: the 36 random configurations use a fixed seed inside the program.
+GitHub CI: ubuntu-latest, actions/setup-python 3.12, packages from requirements.txt. One job: manifest, the program
+under -O (28 PASS lines and "ALL CHECKS PASSED" required), comparison with the shipped output under the policy below, a
+negative control (the exact tetrahedral ratio 102469/74115 changed to 102470/74115 must fail under -O), working tree
+unchanged.
+Comparison policy: the "environment" field (interpreter, packages, platform) and the free-text "detail" of each check
+are excluded; check names, pass flags, the failure list, every string (all exact rationals) and every integer must
+match exactly; floating-point fields (Ryser values, ratios printed as floats, random-configuration ratios and bounds)
+must agree within absolute 1e-12 or relative 1e-9. Exact checks use Python integers and fractions and are platform
+independent; floating-point checks carry their own pass tolerances inside the program (1e-13 for matrix identities,
+relative 1e-8 for Ryser against closed forms, 1e-9 and 1e-6 for grid maxima).
+On the release host the output was byte-identical to the shipped file.

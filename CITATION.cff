@@ -1,0 +1,37 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it using these metadata."
+type: software
+title: "Sharp exponential rates for permanent-on-top and anomalous boson bunching at fixed rank"
+abstract: "Unrefereed research candidate. At every fixed rank d the worst ratio between the largest eigenvalue of the Schur power of a positive semidefinite matrix and its permanent grows with a sharp exponential base: e/2 at complex rank two, e^2/6 at real rank three, tending to e^gamma. The best general constant c* satisfies e^gamma <= c* <= e^(1+gamma). Balanced permanental compounds and anomalous multimode boson bunching have the same sharp bases."
+authors:
+  - name: "Anonymous"
+version: "0.1.0-candidate"
+date-released: "2026-11-26"
+doi: "10.5281/zenodo.24550760"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.24550760"
+    description: "This version"
+  - type: doi
+    value: "10.5281/zenodo.24550759"
+    description: "All versions (concept DOI)"
+repository-code: "https://github.com/ipitchford/permanent-on-top-fixed-rank-rates"
+url: "https://evidencepress.org/releases/permanent-on-top-fixed-rank-rates/"
+license: CC0-1.0
+keywords:
+  - permanent
+  - permanent-on-top conjecture
+  - Schur power
+  - permanental compounds
+  - boson bunching
+  - partial distinguishability
+preferred-citation:
+  type: article
+  title: "Sharp exponential rates for permanent-on-top and anomalous boson bunching at fixed rank"
+  authors:
+    - name: "Anonymous"
+  year: 2026
+  doi: "10.5281/zenodo.24550760"
+  publisher:
+    name: "Zenodo"
+  notes: "Version 0.1.0-candidate; unrefereed"

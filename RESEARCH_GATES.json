@@ -1,0 +1,320 @@
+{
+ "schemaVersion": "1.0",
+ "provenance": "Compiled 26 November 2026 for 0.1.0-candidate from the dated searches of the internal AI-assisted review and source retrieval (25 November 2026), refs.bib, REVIEW_SUMMARY.md and the paper (Sections 1 and 8). It records scrutiny performed, not historical priority.",
+ "contributionMap": [
+  {
+   "claim": "Sharp exponential base of the permanent-on-top ratio at every fixed rank, complex and real",
+   "unit": "statement",
+   "paperLocation": "Theorem 1.1",
+   "searches": [
+    {
+     "date": "2026-11-25",
+     "corpus": "arXiv API queries; Semantic Scholar and OpenAlex lookups; CORE; web searches; the Evidence Press corpus (bapat-sunder-eigenvalue-ratio-growth, sharp-rank-three-chollet-order-five)",
+     "query": "permanent-on-top conjecture; Schur power matrix largest eigenvalue; permanental compounds Pate; anomalous boson bunching partial distinguishability; products of nonnegative forms on the sphere SDP relaxation; linear polarization constants"
+    },
+    {
+     "date": "2026-11-25",
+     "corpus": "the cited works, obtained and read: Shchesnovich 2016, Pappas-Revesz 2004, Yuan-Parrilo arXiv:2102.13220 and Math. Program. 2022, Anari-Gurvits-Oveis Gharan-Saberi FOCS 2017, Christandl-Koenig-Renner 2009, Pate 2008, Drury 2016/2017/2018, Tran 2022, Seron-Novo-Cerf 2023, Pioge-Novo-Cerf (two preprints), Anari-Ebrahimnejad 2026, Ebrahimnejad-Nagda-Oveis Gharan 2024, Aulbach-Markham-Murao 2010, Lev 2015, Zhang 2016, Simanek 2016, liqsweep, Chalmers 2026, the companion Evidence Press release",
+     "query": "which constants and sharpness statements are already proved; scope of the postselection bound; Pate statements; known counterexamples and optical scaling results"
+    }
+   ],
+   "closestPriorWork": "Shchesnovich (finite counterexample); Anari et al. (exponential growth only with rank growing linearly)",
+   "verdict": "new-in-bounded-search",
+   "verdictNote": "rests on the credited Yuan-Parrilo gap and the postselection technique"
+  },
+  {
+   "claim": "Complex mixed-pure product gap g_C(s) and its sharpness",
+   "unit": "statement",
+   "paperLocation": "Proposition 3.1 (complex case)",
+   "searches": [
+    {
+     "date": "2026-11-25",
+     "corpus": "arXiv API queries; Semantic Scholar and OpenAlex lookups; CORE; web searches; the Evidence Press corpus (bapat-sunder-eigenvalue-ratio-growth, sharp-rank-three-chollet-order-five)",
+     "query": "permanent-on-top conjecture; Schur power matrix largest eigenvalue; permanental compounds Pate; anomalous boson bunching partial distinguishability; products of nonnegative forms on the sphere SDP relaxation; linear polarization constants"
+    },
+    {
+     "date": "2026-11-25",
+     "corpus": "the cited works, obtained and read: Shchesnovich 2016, Pappas-Revesz 2004, Yuan-Parrilo arXiv:2102.13220 and Math. Program. 2022, Anari-Gurvits-Oveis Gharan-Saberi FOCS 2017, Christandl-Koenig-Renner 2009, Pate 2008, Drury 2016/2017/2018, Tran 2022, Seron-Novo-Cerf 2023, Pioge-Novo-Cerf (two preprints), Anari-Ebrahimnejad 2026, Ebrahimnejad-Nagda-Oveis Gharan 2024, Aulbach-Markham-Murao 2010, Lev 2015, Zhang 2016, Simanek 2016, liqsweep, Chalmers 2026, the companion Evidence Press release",
+     "query": "which constants and sharpness statements are already proved; scope of the postselection bound; Pate statements; known counterexamples and optical scaling results"
+    }
+   ],
+   "closestPriorWork": "Yuan-Parrilo Thms 4.6, 5.1, 5.2, building on Pappas-Revesz Thm 1",
+   "verdict": "known-cited",
+   "verdictNote": "credited in the abstract and Section 1"
+  },
+  {
+   "claim": "Real constant g_R for real data against complex pure states; rank-t versions",
+   "unit": "statement",
+   "paperLocation": "Proposition 3.1 (real case), Lemma 3.2",
+   "searches": [
+    {
+     "date": "2026-11-25",
+     "corpus": "arXiv API queries; Semantic Scholar and OpenAlex lookups; CORE; web searches; the Evidence Press corpus (bapat-sunder-eigenvalue-ratio-growth, sharp-rank-three-chollet-order-five)",
+     "query": "permanent-on-top conjecture; Schur power matrix largest eigenvalue; permanental compounds Pate; anomalous boson bunching partial distinguishability; products of nonnegative forms on the sphere SDP relaxation; linear polarization constants"
+    },
+    {
+     "date": "2026-11-25",
+     "corpus": "the cited works, obtained and read: Shchesnovich 2016, Pappas-Revesz 2004, Yuan-Parrilo arXiv:2102.13220 and Math. Program. 2022, Anari-Gurvits-Oveis Gharan-Saberi FOCS 2017, Christandl-Koenig-Renner 2009, Pate 2008, Drury 2016/2017/2018, Tran 2022, Seron-Novo-Cerf 2023, Pioge-Novo-Cerf (two preprints), Anari-Ebrahimnejad 2026, Ebrahimnejad-Nagda-Oveis Gharan 2024, Aulbach-Markham-Murao 2010, Lev 2015, Zhang 2016, Simanek 2016, liqsweep, Chalmers 2026, the companion Evidence Press release",
+     "query": "which constants and sharpness statements are already proved; scope of the postselection bound; Pate statements; known counterexamples and optical scaling results"
+    }
+   ],
+   "closestPriorWork": "Yuan-Parrilo's real constant (real pure states) equals 2 g_R",
+   "verdict": "new-in-bounded-search",
+   "verdictNote": "differs from the known real constant"
+  },
+  {
+   "claim": "Explicit finite bound at every order; e^gamma <= c* <= e^(1+gamma); exact rate e^gamma for rank o(sqrt n)",
+   "unit": "statement",
+   "paperLocation": "Theorem 1.2",
+   "searches": [
+    {
+     "date": "2026-11-25",
+     "corpus": "arXiv API queries; Semantic Scholar and OpenAlex lookups; CORE; web searches; the Evidence Press corpus (bapat-sunder-eigenvalue-ratio-growth, sharp-rank-three-chollet-order-five)",
+     "query": "permanent-on-top conjecture; Schur power matrix largest eigenvalue; permanental compounds Pate; anomalous boson bunching partial distinguishability; products of nonnegative forms on the sphere SDP relaxation; linear polarization constants"
+    },
+    {
+     "date": "2026-11-25",
+     "corpus": "the cited works, obtained and read: Shchesnovich 2016, Pappas-Revesz 2004, Yuan-Parrilo arXiv:2102.13220 and Math. Program. 2022, Anari-Gurvits-Oveis Gharan-Saberi FOCS 2017, Christandl-Koenig-Renner 2009, Pate 2008, Drury 2016/2017/2018, Tran 2022, Seron-Novo-Cerf 2023, Pioge-Novo-Cerf (two preprints), Anari-Ebrahimnejad 2026, Ebrahimnejad-Nagda-Oveis Gharan 2024, Aulbach-Markham-Murao 2010, Lev 2015, Zhang 2016, Simanek 2016, liqsweep, Chalmers 2026, the companion Evidence Press release",
+     "query": "which constants and sharpness statements are already proved; scope of the postselection bound; Pate statements; known counterexamples and optical scaling results"
+    }
+   ],
+   "closestPriorWork": "Anari et al. Thm 2 (upper bound e^(1+gamma)) and Problem 1",
+   "verdict": "new-in-bounded-search",
+   "verdictNote": "upper bound credited; full-rank value open"
+  },
+  {
+   "claim": "Balanced permanental compounds: sharp bases; exponential failure of the 0/1 inequality stated by Pate",
+   "unit": "statement",
+   "paperLocation": "Theorem 5.1",
+   "searches": [
+    {
+     "date": "2026-11-25",
+     "corpus": "arXiv API queries; Semantic Scholar and OpenAlex lookups; CORE; web searches; the Evidence Press corpus (bapat-sunder-eigenvalue-ratio-growth, sharp-rank-three-chollet-order-five)",
+     "query": "permanent-on-top conjecture; Schur power matrix largest eigenvalue; permanental compounds Pate; anomalous boson bunching partial distinguishability; products of nonnegative forms on the sphere SDP relaxation; linear polarization constants"
+    },
+    {
+     "date": "2026-11-25",
+     "corpus": "the cited works, obtained and read: Shchesnovich 2016, Pappas-Revesz 2004, Yuan-Parrilo arXiv:2102.13220 and Math. Program. 2022, Anari-Gurvits-Oveis Gharan-Saberi FOCS 2017, Christandl-Koenig-Renner 2009, Pate 2008, Drury 2016/2017/2018, Tran 2022, Seron-Novo-Cerf 2023, Pioge-Novo-Cerf (two preprints), Anari-Ebrahimnejad 2026, Ebrahimnejad-Nagda-Oveis Gharan 2024, Aulbach-Markham-Murao 2010, Lev 2015, Zhang 2016, Simanek 2016, liqsweep, Chalmers 2026, the companion Evidence Press release",
+     "query": "which constants and sharpness statements are already proved; scope of the postselection bound; Pate statements; known counterexamples and optical scaling results"
+    }
+   ],
+   "closestPriorWork": "Pate 2008; Drury 2018 and Tran (finite counterexamples); companion release (fixed k, polylogarithmic scale)",
+   "verdict": "new-in-bounded-search",
+   "verdictNote": "layer-cake lemma credited to the companion and Lev"
+  },
+  {
+   "claim": "Sharp base of anomalous multimode bunching; explicit tetrahedral and six-polarisation designs with exact values",
+   "unit": "statement",
+   "paperLocation": "Corollary 6.1, Section 7",
+   "searches": [
+    {
+     "date": "2026-11-25",
+     "corpus": "arXiv API queries; Semantic Scholar and OpenAlex lookups; CORE; web searches; the Evidence Press corpus (bapat-sunder-eigenvalue-ratio-growth, sharp-rank-three-chollet-order-five)",
+     "query": "permanent-on-top conjecture; Schur power matrix largest eigenvalue; permanental compounds Pate; anomalous boson bunching partial distinguishability; products of nonnegative forms on the sphere SDP relaxation; linear polarization constants"
+    },
+    {
+     "date": "2026-11-25",
+     "corpus": "the cited works, obtained and read: Shchesnovich 2016, Pappas-Revesz 2004, Yuan-Parrilo arXiv:2102.13220 and Math. Program. 2022, Anari-Gurvits-Oveis Gharan-Saberi FOCS 2017, Christandl-Koenig-Renner 2009, Pate 2008, Drury 2016/2017/2018, Tran 2022, Seron-Novo-Cerf 2023, Pioge-Novo-Cerf (two preprints), Anari-Ebrahimnejad 2026, Ebrahimnejad-Nagda-Oveis Gharan 2024, Aulbach-Markham-Murao 2010, Lev 2015, Zhang 2016, Simanek 2016, liqsweep, Chalmers 2026, the companion Evidence Press release",
+     "query": "which constants and sharpness statements are already proved; scope of the postselection bound; Pate statements; known counterexamples and optical scaling results"
+    }
+   ],
+   "closestPriorWork": "Seron-Novo-Cerf (linear growth); Pioge-Novo-Cerf (time delays)",
+   "verdict": "new-in-bounded-search",
+   "verdictNote": "model predictions only"
+  },
+  {
+   "claim": "Rigidity: full base only for equidistributed directions",
+   "unit": "statement",
+   "paperLocation": "Theorem A.1",
+   "searches": [
+    {
+     "date": "2026-11-25",
+     "corpus": "arXiv API queries; Semantic Scholar and OpenAlex lookups; CORE; web searches; the Evidence Press corpus (bapat-sunder-eigenvalue-ratio-growth, sharp-rank-three-chollet-order-five)",
+     "query": "permanent-on-top conjecture; Schur power matrix largest eigenvalue; permanental compounds Pate; anomalous boson bunching partial distinguishability; products of nonnegative forms on the sphere SDP relaxation; linear polarization constants"
+    },
+    {
+     "date": "2026-11-25",
+     "corpus": "the cited works, obtained and read: Shchesnovich 2016, Pappas-Revesz 2004, Yuan-Parrilo arXiv:2102.13220 and Math. Program. 2022, Anari-Gurvits-Oveis Gharan-Saberi FOCS 2017, Christandl-Koenig-Renner 2009, Pate 2008, Drury 2016/2017/2018, Tran 2022, Seron-Novo-Cerf 2023, Pioge-Novo-Cerf (two preprints), Anari-Ebrahimnejad 2026, Ebrahimnejad-Nagda-Oveis Gharan 2024, Aulbach-Markham-Murao 2010, Lev 2015, Zhang 2016, Simanek 2016, liqsweep, Chalmers 2026, the companion Evidence Press release",
+     "query": "which constants and sharpness statements are already proved; scope of the postselection bound; Pate statements; known counterexamples and optical scaling results"
+    }
+   ],
+   "closestPriorWork": "Simanek 2016 (related potential-theoretic statement)",
+   "verdict": "new-in-bounded-search",
+   "verdictNote": "transform proved directly"
+  },
+  {
+   "claim": "Method: postselection comparison of the Schur power with mixed product states; random rounding; equidistributed configurations",
+   "unit": "method",
+   "paperLocation": "Sections 2-3",
+   "searches": [
+    {
+     "date": "2026-11-25",
+     "corpus": "arXiv API queries; Semantic Scholar and OpenAlex lookups; CORE; web searches; the Evidence Press corpus (bapat-sunder-eigenvalue-ratio-growth, sharp-rank-three-chollet-order-five)",
+     "query": "permanent-on-top conjecture; Schur power matrix largest eigenvalue; permanental compounds Pate; anomalous boson bunching partial distinguishability; products of nonnegative forms on the sphere SDP relaxation; linear polarization constants"
+    },
+    {
+     "date": "2026-11-25",
+     "corpus": "the cited works, obtained and read: Shchesnovich 2016, Pappas-Revesz 2004, Yuan-Parrilo arXiv:2102.13220 and Math. Program. 2022, Anari-Gurvits-Oveis Gharan-Saberi FOCS 2017, Christandl-Koenig-Renner 2009, Pate 2008, Drury 2016/2017/2018, Tran 2022, Seron-Novo-Cerf 2023, Pioge-Novo-Cerf (two preprints), Anari-Ebrahimnejad 2026, Ebrahimnejad-Nagda-Oveis Gharan 2024, Aulbach-Markham-Murao 2010, Lev 2015, Zhang 2016, Simanek 2016, liqsweep, Chalmers 2026, the companion Evidence Press release",
+     "query": "which constants and sharpness statements are already proved; scope of the postselection bound; Pate statements; known counterexamples and optical scaling results"
+    }
+   ],
+   "closestPriorWork": "Christandl-Koenig-Renner postselection; Yuan-Parrilo rounding and sharpness",
+   "verdict": "partially-known-cited",
+   "verdictNote": "combination new; components credited"
+  }
+ ],
+ "sourcesReadInFull": [
+  {
+   "citation": "Shchesnovich, V. S. (2016), The permanent-on-top conjecture is false, Linear Algebra Appl. 490",
+   "usedFor": "disproof; order-five example used in the checks",
+   "readWhat": "abstract and Eq. (3)",
+   "date": "2026-11-25",
+   "evidenceLocator": "https://doi.org/10.1016/j.laa.2015.10.034"
+  },
+  {
+   "citation": "Yuan, C. and Parrilo, P. A. (2021), Semidefinite relaxations of products of nonnegative forms on the sphere, arXiv:2102.13220",
+   "usedFor": "complex gap constant and sharpness",
+   "readWhat": "Theorems 1.3, 4.6, 5.1, 5.2",
+   "date": "2026-11-25",
+   "evidenceLocator": "https://arxiv.org/abs/2102.13220"
+  },
+  {
+   "citation": "Pappas, A. and Revesz, S. G. (2004), Linear polarization constants of Hilbert spaces, J. Math. Anal. Appl. 300",
+   "usedFor": "polarisation constants behind the sharpness",
+   "readWhat": "Theorem 1 and Theorem F",
+   "date": "2026-11-25",
+   "evidenceLocator": "https://doi.org/10.1016/j.jmaa.2004.06.031"
+  },
+  {
+   "citation": "Anari, N., Gurvits, L., Oveis Gharan, S. and Saberi, A. (2017), FOCS",
+   "usedFor": "upper bound e^(1+gamma); Problem 1",
+   "readWhat": "Theorem 2, Claim 1, Problem 1",
+   "date": "2026-11-25",
+   "evidenceLocator": "https://doi.org/10.1109/FOCS.2017.89"
+  },
+  {
+   "citation": "Christandl, M., Koenig, R. and Renner, R. (2009), Phys. Rev. Lett. 102, 020504",
+   "usedFor": "postselection technique",
+   "readWhat": "whole paper",
+   "date": "2026-11-25",
+   "evidenceLocator": "https://doi.org/10.1103/PhysRevLett.102.020504"
+  },
+  {
+   "citation": "Pate, T. H. (2008), On permanental compounds, Linear Algebra Appl. 429",
+   "usedFor": "0/1 inequality and conjecture",
+   "readWhat": "Theorem 7, Conjecture 2, Corollary 3",
+   "date": "2026-11-25",
+   "evidenceLocator": "https://doi.org/10.1016/j.laa.2007.05.019"
+  },
+  {
+   "citation": "Seron, B., Novo, L. and Cerf, N. J. (2023), Nature Photonics 17",
+   "usedFor": "optical model and scaling question",
+   "readWhat": "Eqs. (1)-(4) and conclusion (arXiv version)",
+   "date": "2026-11-25",
+   "evidenceLocator": "https://doi.org/10.1038/s41566-023-01213-0"
+  },
+  {
+   "citation": "Anonymous (2026), Sharp logarithmic growth of the Bapat-Sunder eigenvalue ratio, Evidence Press, v0.1.0-candidate",
+   "usedFor": "companion: first compound, layer-cake lemma, rank-two appendix",
+   "readWhat": "whole release",
+   "date": "2026-11-25",
+   "evidenceLocator": "https://doi.org/10.5281/zenodo.24509057"
+  },
+  {
+   "citation": "Drury, S. (2016, 2017, 2018); Tran, H. A. (2022)",
+   "usedFor": "finite counterexamples",
+   "readWhat": "whole papers",
+   "date": "2026-11-25",
+   "evidenceLocator": "https://doi.org/10.7153/mia-20-23"
+  },
+  {
+   "citation": "Anari, N. and Ebrahimnejad, F. (2026), arXiv:2605.21946; Ebrahimnejad, F., Nagda, A. and Oveis Gharan, S. (2024), arXiv:2404.10959",
+   "usedFor": "e^gamma approximation landscape",
+   "readWhat": "main theorems",
+   "date": "2026-11-25",
+   "evidenceLocator": "https://arxiv.org/abs/2605.21946"
+  }
+ ],
+ "limitationTriage": [
+  {
+   "limitation": "Value of c* at full rank",
+   "closingQuestion": "Is c* = e^gamma?",
+   "triedOrSearched": "attempted in the revision round; a small probe of the Anari-Ebrahimnejad estimator was only suggestive",
+   "estimatedCost": "new research",
+   "cheap": false,
+   "decision": "OPEN",
+   "reasonOpen": "needs a bound of the Schur power by that estimator; Section 8",
+   "whyNotClosedNow": "needs a bound of the Schur power by that estimator; Section 8"
+  },
+  {
+   "limitation": "Unbalanced compounds",
+   "closingQuestion": "What is the rate when k/n tends to a constant below one half?",
+   "triedOrSearched": "not landed in the revision round",
+   "estimatedCost": "new research",
+   "cheap": false,
+   "decision": "OPEN",
+   "reasonOpen": "recorded in Section 8",
+   "whyNotClosedNow": "recorded in Section 8"
+  },
+  {
+   "limitation": "Asymptotic statements only",
+   "closingQuestion": "Explicit lower bounds at moderate order?",
+   "triedOrSearched": "explicit designs give exact finite values; general finite-order bounds not attempted",
+   "estimatedCost": "new research",
+   "cheap": false,
+   "decision": "OPEN",
+   "reasonOpen": "recorded in Section 8",
+   "whyNotClosedNow": "recorded in Section 8"
+  },
+  {
+   "limitation": "Optical values are model predictions",
+   "closingQuestion": "Do experiments confirm them?",
+   "triedOrSearched": "physical-scale paragraph added; no experiment",
+   "estimatedCost": "laboratory work",
+   "cheap": false,
+   "decision": "OPEN",
+   "reasonOpen": "outside the scope of a mathematical paper",
+   "whyNotClosedNow": "outside the scope of a mathematical paper"
+  },
+  {
+   "limitation": "Scripts must fail under python -O",
+   "closingQuestion": "Does the program raise without assert?",
+   "triedOrSearched": "no assert statements; negative control exits 1 under -O",
+   "estimatedCost": "hours",
+   "cheap": true,
+   "decision": "CLOSED",
+   "reasonOpen": "",
+   "whyNotClosedNow": ""
+  },
+  {
+   "limitation": "Literature search of limited scope",
+   "closingQuestion": "Would a wider search change attribution?",
+   "triedOrSearched": "database and web searches; all cited sources obtained and read",
+   "estimatedCost": "library time",
+   "cheap": false,
+   "decision": "OPEN",
+   "reasonOpen": "priority claimed only within the searches",
+   "whyNotClosedNow": "priority claimed only within the searches"
+  }
+ ],
+ "extensionScout": {
+  "by": "the internal review and the lead",
+  "date": "2026-11-25",
+  "proposals": [
+   "explicit finite bound at every order",
+   "lower bound for c* and slowly growing rank",
+   "six-polarisation design with exact values",
+   "uniform rigidity gap",
+   "c* at full rank",
+   "unbalanced compounds"
+  ],
+  "actions": [
+   "done: Theorem 1.2(a)",
+   "done: Theorem 1.2(b), (c)",
+   "done: Section 7",
+   "done: Theorem A.1",
+   "attempted, not landed: open in Section 8",
+   "attempted, not landed: open in Section 8"
+  ]
+ }
+}

@@ -1,0 +1,380 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[left=24mm,right=24mm,top=22mm,bottom=22mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,microtype,xcolor,hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!50!black,urlcolor=blue!50!black,citecolor=blue!50!black,pdftitle={Sharp exponential rates for permanent-on-top and anomalous boson bunching at fixed rank},pdfauthor={Anonymous}}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\per}{\operatorname{per}}
+\newcommand{\tr}{\operatorname{Tr}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\C}{\mathbb C}
+\newcommand{\R}{\mathbb R}
+\newcommand{\K}{\mathbb K}
+\DeclareMathOperator{\Sym}{Sym}
+\title{Sharp exponential rates for permanent-on-top\\and anomalous boson bunching at fixed rank}
+\author{Anonymous\\[3pt]{\small DOI \href{https://doi.org/10.5281/zenodo.24550760}{10.5281/zenodo.24550760}}}
+\date{November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+The permanent of a positive semidefinite matrix $A$ is always an eigenvalue of its Schur power matrix $\Pi(A)$, and the permanent-on-top conjecture asserted that it is the largest one. The conjecture is false, but it was not known how large the ratio $\norm{\Pi(A)}/\per A$ can become when the rank of $A$ is held fixed and its order $n$ grows. We determine the sharp exponential base at every fixed rank $d$; it exceeds one from complex rank two and real rank three. The base is $e^{H_{d-1}}/d$ for complex matrices and $2\exp\{\psi(d/2)-\psi(1)\}/d$ for real ones, where $H_j$ is a harmonic number and $\psi$ is the digamma function. The bases are $e/2$ at complex rank two and $e^2/6$ at real rank three, and both tend to $e^\gamma$ as $d\to\infty$. The proof compares the spectral ratio, up to factors polynomial in $n$, with the gap between a product of quadratic forms maximised over mixed and over pure states. The complex value of this gap was known from work of Yuan and Parrilo; the real value, in which real data must be tested against complex pure states, is new. Two consequences concern unrestricted rank: the best constant $c^*$ in $\norm{\Pi(A)}\le (c^*)^n\per A$ satisfies $e^\gamma\le c^*\le e^{1+\gamma}$, and $e^\gamma$ is the exact asymptotic rate whenever the rank tends to infinity more slowly than $\sqrt n$. The same bases govern balanced permanental compounds, which therefore violate an inequality stated by Pate exponentially, and the enhancement of multimode boson bunching by partial distinguishability. Two designated output modes and two polarisation states per photon already give the sharp base $e/2$; with the six standard polarisations the enhancement exceeds $2$ at twelve photons in an explicit model interferometer.
+\end{abstract}
+
+\section{Introduction}\label{sec:intro}
+This section explains the question, why it matters, what was known, and what the paper proves. A roadmap is at the end.
+
+\paragraph{Permanents and the Schur power.}
+The \emph{permanent} of an $n\times n$ matrix $A=(a_{ij})$ is $\per A=\sum_{\sigma}\prod_{i=1}^n a_{i,\sigma(i)}$, the sum over all permutations $\sigma$ of $\{1,\dots,n\}$; it is the determinant without signs. When $A$ is positive semidefinite it is the Gram matrix of vectors, $a_{ij}=v_i^*v_j$ with $v_i\in\C^d$, where $d$ is the rank (we call $d$ the \emph{Gram rank} and allow any $d\ge\operatorname{rank}A$). The \emph{Schur power} of $A$ is the $n!\times n!$ matrix indexed by permutations,
+\[
+ \Pi(A)_{\sigma,\tau}=\prod_{i=1}^n a_{\sigma(i),\tau(i)} .
+\]
+It is positive semidefinite and every row sums to $\per A$, so $\per A$ is an eigenvalue. The \emph{permanent-on-top} (POT) conjecture, proposed by Soules in his 1966 dissertation, asserted that it is the largest eigenvalue; see the survey \cite{Zhang16}. The conjecture sits at the centre of a family of permanental inequalities descending from Lieb's 1966 work: it implies the Bapat--Sunder permanental analogue of Oppenheim's inequality, $\per(A\circ B)\le\per A\prod_jb_{jj}$, and Pate's conjectures on permanental compounds \cite{Drury16,Drury17,Pate,Anh}.
+
+\paragraph{Why the size of the violation matters.}
+POT is false (see below), so the natural question is quantitative: how large can $\norm{\Pi(A)}/\per A$ be? This ratio controls three things. First, it measures how far the whole family of permanental inequalities above can fail, because each of them is a test of $\Pi(A)$ against special vectors. Second, it enters the approximation of permanents: Anari, Gurvits, Oveis Gharan and Saberi derived the bound $\norm{\Pi(A)}\le e^{(1+\gamma)n}\per A$, where $\gamma=0.5772\ldots$ is Euler's constant, from the relaxation behind their deterministic approximation algorithm for permanents and asked for the best constant \cite[Theorem~2 and Problem~1]{AGGS}. Third, it has an operational meaning in linear optics: when photons with partially distinguishable internal states (such as polarisations) pass through an interferometer, the probability that all of them leave through a chosen set of output modes is a permanent of a Hadamard product, and its ratio to the value for identical photons is bounded by the Schur-power ratio. Values above one are called \emph{anomalous bunching} \cite{SNC,PNC26}.
+
+\paragraph{What was known.}
+Shchesnovich disproved POT in 2016 with a complex $5\times5$ matrix of rank two \cite{Shch}; see also \cite{Anh,Zhang16}. Drury gave a complex $7\times 7$ counterexample to the Bapat--Sunder Hadamard inequality \cite{Drury16} and a real one of order $16$ and rank three, which is also a real counterexample to POT \cite{Drury17}. Anari et al.\ proved the upper bound $\norm{\Pi(A)}\le e^{(1+\gamma)n}\per A$ for every positive semidefinite $A$ and obtained exponential growth by taking direct sums of copies of a fixed counterexample \cite[Theorem~2 and Claim~1]{AGGS}; in that construction the rank grows linearly with $n$. For real matrices of rank two the ratio equals one at every order, by a theorem of liqsweep \cite{Liq} that is also proved in the companion release \cite[Appendix~A]{EPBS}. Seron, Novo and Cerf translated Drury's example into optics and exhibited a two-dimensional polarisation family whose bunching enhancement grows linearly with $n$; they suggested that larger internal spaces might give faster growth \cite{SNC}. For the first permanental compound, the companion release determines the worst ratio exactly at the logarithmic scale and shows that the $0/1$ inequality stated by Pate for higher compounds fails for every fixed compound order $k\ge2$ \cite{EPBS}. On the optimisation side, Yuan and Parrilo determined the worst ratio between a product of nonnegative quadratic forms $v_i^*Xv_i$ maximised over mixed states $X$ (positive semidefinite matrices of trace one) and the same product maximised over pure states (those of rank one), for complex data \cite{YP2}; this is the key constant below in the complex case.
+
+\paragraph{What is new.}
+We fix the field $\K=\R$ or $\C$ and the Gram rank $d$, and let $n\to\infty$. Write $H_0=0$, $H_j=\sum_{i=1}^j 1/i$, and $\psi=(\log\Gamma)'$ for the digamma function, and define
+\[
+ g_\C(d)=\frac{e^{H_{d-1}}}{d},\qquad g_\R(1)=1,\qquad g_\R(d)=\frac2d\exp\{\psi(d/2)-\psi(1)\}\ \ (d\ge2).
+\]
+Let $S_{\K,d}(n)$ be the supremum of $\norm{\Pi(A)}/\per A$ over Gram matrices of $n$ nonzero vectors in $\K^d$. The \emph{sharp exponential base} of such a family of suprema is $\lim_{n\to\infty}S(n)^{1/n}$.
+
+\begin{theorem}[fixed rank]\label{thm:full}
+For every $d\ge1$, $\lim_{n\to\infty}S_{\C,d}(n)^{1/n}=g_\C(d)$ and $\lim_{n\to\infty}S_{\R,d}(n)^{1/n}=g_\R(d)$. The same limits hold when the Gram rank is required to equal $d$.
+\end{theorem}
+
+Numerically, $g_\R(2)=1$, $g_\R(3)=e^2/6=1.2315\ldots$, $g_\C(2)=g_\R(4)=e/2=1.3591\ldots$; in general $g_\R(2t)=g_\C(t)$ because $\psi(t)-\psi(1)=H_{t-1}$. Both sequences increase strictly (the real one from $d=2$) to $e^\gamma=1.7810\ldots$ (Lemma~\ref{lem:monotone}).
+
+\begin{theorem}[unrestricted and slowly growing rank]\label{thm:unrestricted}
+\begin{enumerate}
+\item[(a)] For every positive semidefinite $A$ of order $n$ and rank at most $d$,
+\[
+\norm{\Pi(A)}\le\binom{n+d^2-1}{n}\,g_\K(d)^n\,\per A ,
+\]
+with $\K=\R$ if $A$ is real and $\K=\C$ otherwise.
+\item[(b)] Let $c^*$ be the least constant with $\norm{\Pi(A)}\le(c^*)^n\per A$ for all $n$ and all positive semidefinite $A$. Then $e^\gamma\le c^*\le e^{1+\gamma}$. The same lower bound holds for real matrices.
+\item[(c)] If $d(n)\to\infty$ and $d(n)=o(\sqrt n)$, the supremum of $(\norm{\Pi(A)}/\per A)^{1/n}$ over positive semidefinite $A$ of order $n$, rank at most $d(n)$ and $\per A>0$ tends to $e^\gamma$, over $\C$ and over $\R$.
+\end{enumerate}
+\end{theorem}
+
+The constant $e^\gamma$ also appears in two recent results on approximating permanents of positive semidefinite matrices: approximation within $e^{(\gamma-\varepsilon)n}$ is NP-hard \cite{ENO}, and an explicit convex estimator $\widehat P$ satisfies $e^{-\gamma n}\widehat P(A)\le\per A\le\widehat P(A)$ \cite{AE26}. Theorem~\ref{thm:unrestricted} shows that the same constant is a lower bound for the POT ratio, and its exact asymptotic rate in the regime (c).
+
+The same machinery gives the following results, proved in Sections~\ref{sec:compounds}--\ref{sec:designs}.
+\begin{itemize}
+\item \emph{Balanced permanental compounds} (Theorem~\ref{thm:balanced}). Splitting the $n$ indices into $t$ parts of nearly equal size gives a compound matrix whose largest eigenvalue, and also its best $0/1$ test, exceeds $\per A$ by the sharp base $g_\C(\min(d,t))$ or $g_\R(\min(d,2t))$. For two parts this is the complementary compound of Pate, whose $0/1$ inequality \cite[Theorem~7]{Pate} therefore fails exponentially, with base $e/2$ at every complex rank $d\ge2$.
+\item \emph{Anomalous boson bunching} (Corollary~\ref{cor:hadamard}). With $d$ designated output modes and internal states of dimension $t$, the sharp base of the bunching enhancement is the same as for compounds. Two output modes and two polarisation states give the sharp base $e/2$, which answers the scaling question of \cite{SNC} in its two-dimensional setting.
+\item \emph{Explicit designs} (Section~\ref{sec:designs}). Exact formulas for repeated tetrahedral and octahedral polarisation sets. With the six standard polarisations, the model enhancement is $62731/28800>2.17$ at twelve photons and exceeds $24\,000$ at sixty photons.
+\item \emph{Rigidity} (Appendix~\ref{app:rigidity}). Configurations of vectors attain the full base only if their directions become equidistributed; any bounded number of distinct directions gives a strictly smaller base.
+\end{itemize}
+
+\paragraph{Known and new.}
+The complex value of the mixed--pure gap (Proposition~\ref{prop:gap} below), together with its asymptotic sharpness in fixed dimension, is due to Yuan and Parrilo \cite[Theorems~4.6, 5.1 and~5.2]{YP2}; their sharpness argument rests on the asymptotic linear polarisation constants of finite-dimensional Hilbert spaces, determined for complex spaces by Pappas and R\'ev\'esz \cite[Theorem~1]{PR} (the real case is due to Garc\'ia-V\'azquez and Villa, as recorded in \cite[Theorem~F]{PR}). The comparison of the permanent with the pure product (equation~\eqref{eq:pure}) is standard; compare \cite[Corollary~1.2]{YP1}. The comparison of the Schur-power norm with the mixed product uses the postselection technique of Christandl, K\"onig and Renner \cite{CKR}. New here are: the identification of the POT ratio with the mixed--pure gap (Proposition~\ref{prop:compare}); the real constant $g_\R$, which concerns real data tested against complex pure states and differs from Yuan and Parrilo's real constant (real data, real pure states), which equals $2g_\R(d)$; the rank-constrained versions; Theorems~\ref{thm:full} and~\ref{thm:unrestricted}; and the applications to compounds, optics and rigidity. To our knowledge no earlier work determines a fixed-rank POT rate or states the lower bound $c^*\ge e^\gamma$.
+
+\paragraph{Roadmap.}
+Section~\ref{sec:compare} fixes notation and proves the two comparisons. Section~\ref{sec:gap} computes the sharp mixed--pure gaps. Section~\ref{sec:schur} proves Theorems~\ref{thm:full} and~\ref{thm:unrestricted}. Section~\ref{sec:compounds} treats balanced compounds and Pate's inequality, Section~\ref{sec:optics} the optical ratio, and Section~\ref{sec:designs} explicit polarisation designs and their physical scale. Section~\ref{sec:open} lists open problems. Appendix~\ref{app:rigidity} proves the rigidity theorem, and Appendix~\ref{sec:checks} describes the accompanying computational checks.
+
+\section{Notation and the two comparisons}\label{sec:compare}
+This section reduces the Schur-power ratio and the permanent to two optimisation problems over states.
+
+\paragraph{Notation.}
+Throughout, $v_1,\dots,v_n$ are unit vectors in $\K^d$ (a \emph{configuration}) and $A=(v_i^*v_j)$ is their Gram matrix, a correlation matrix (unit diagonal). Real vectors are regarded as complex vectors when convenient. Replacing $A$ by $DAD$ with $D$ diagonal and positive multiplies both $\norm{\Pi(A)}$ and $\per A$ by $(\det D)^2$, so the normalisation to unit vectors is no loss. A \emph{state} is a positive semidefinite complex $d\times d$ matrix of trace one; a \emph{pure state} is a state of rank one. For $j\ge1$ write
+\[
+D_{n,j}=\binom{n+j-1}{j-1}=\dim\Sym^n(\C^j),
+\]
+where $\Sym^n(\C^j)$ is the symmetric subspace of $(\C^j)^{\otimes n}$, and $P_{n,j}$ for the orthogonal projection onto it. For $t\ge1$ define the \emph{product objectives}
+\[
+ M_t(v)=\max_{X\text{ state},\ \operatorname{rank}X\le t}\ \prod_{i=1}^n v_i^*Xv_i,\qquad q(v)=M_1(v)=\max_{\norm u=1,\ u\in\C^d}\prod_{i=1}^n|u^*v_i|^2 .
+\]
+The maximum in $q$ is over \emph{complex} unit vectors $u$, also when all $v_i$ are real; this choice determines the real constant. Note $M_t=M_d$ for $t\ge d$.
+
+\begin{proposition}\label{prop:compare}
+For every configuration in $\C^d$ with Gram matrix $A$,
+\begin{align}
+ q(v)&\le \per(A)/n!\le D_{n,d}\,q(v),\label{eq:pure}\\
+ M_d(v)&\le \norm{\Pi(A)}/n!\le D_{n,d^2}\,M_d(v).\label{eq:mixed}
+\end{align}
+\end{proposition}
+\begin{proof}
+Put $\xi=v_1\otimes\cdots\otimes v_n$ and let $U_\sigma$ permute the tensor positions. The Gram matrix of the vectors $U_\sigma\xi$ is $\Pi(A)$ up to a consistent reindexing, so it has the same nonzero spectrum as $\sum_\sigma U_\sigma\xi\xi^*U_\sigma^*$. Hence the \emph{averaged state}
+\[
+ \Gamma_v=\frac1{n!}\sum_{\sigma} U_\sigma\xi\xi^*U_\sigma^*
+\]
+has norm $\norm{\Pi(A)}/n!$. Also $\norm{P_{n,d}\xi}^2=\per(A)/n!$. With $\mu$ the unitarily invariant probability measure on the unit sphere of $\C^j$, the resolution of the identity
+\[
+ P_{n,j}=D_{n,j}\int (uu^*)^{\otimes n}\,d\mu(u)
+\]
+holds by unitary invariance and irreducibility of $\Sym^n(\C^j)$, the scalar being fixed by taking traces. Evaluating $\langle\xi,P_{n,d}\xi\rangle$ with this resolution and bounding the integral by its maximum gives the upper bound in \eqref{eq:pure}. The lower bound holds because $u^{\otimes n}$ is a unit vector in the symmetric subspace and $|\langle u^{\otimes n},\xi\rangle|^2=\prod_i|u^*v_i|^2$.
+
+For any state $X$, $X^{\otimes n}$ commutes with every $U_\sigma$, so $\tr(\Gamma_vX^{\otimes n})=\langle\xi,X^{\otimes n}\xi\rangle=\prod_i v_i^*Xv_i$, while $\tr X^{\otimes n}=1$. This proves the lower bound in \eqref{eq:mixed}. For the upper bound we use the postselection construction of \cite{CKR}. Let $\varphi$ be a unit top eigenvector of $\Gamma_v$ and let $T=\frac1{n!}\sum_\sigma U_\sigma\varphi\varphi^*U_\sigma^*$; then $T$ is a permutation-invariant state with $\langle\xi,T\xi\rangle=\langle\varphi,\Gamma_v\varphi\rangle=\norm{\Gamma_v}$. Identify operators on $(\C^d)^{\otimes n}$ with vectors in $(\C^d)^{\otimes n}\otimes\overline{(\C^d)^{\otimes n}}$ by $\operatorname{vec}(xy^*)=x\otimes\bar y$, so that $(B\otimes\bar C)\operatorname{vec}(Z)=\operatorname{vec}(BZC^*)$. The vector $w=\operatorname{vec}(\sqrt T)$ is a unit vector whose marginal on the first factor is $T$. Since $\sqrt T$ commutes with each $U_\sigma$ and permutation matrices are real, $(U_\sigma\otimes\bar U_\sigma)w=w$. After pairing the $i$th original site with the $i$th conjugate site, this says that $w$ lies in $\Sym^n(\C^d\otimes\C^d)$, so $ww^*\preceq P_{n,d^2}$. Inserting the resolution in dimension $d^2$ and taking the partial trace over the conjugate copy, which preserves the order $\preceq$, gives
+\[
+ T\preceq D_{n,d^2}\int X_u^{\otimes n}\,d\mu(u),
+\]
+where $X_u$ is the first marginal of $uu^*$ for $u$ a unit vector in $\C^d\otimes\C^d$; each $X_u$ is a state. Testing against $\xi$ gives $\norm{\Gamma_v}\le D_{n,d^2}\max_u\prod_iv_i^*X_uv_i\le D_{n,d^2}M_d(v)$.
+\end{proof}
+
+\section{Sharp gaps between mixed and pure products}\label{sec:gap}
+This section computes the exponential size of $M_t/q$, the worst ratio between the mixed and the pure product objectives.
+
+For $t\ge1$ set $s=\min(d,t)$ for complex configurations and $s=\min(d,2t)$ for real ones. The real case rests on the following observation. If $v$ is real and $X$ is a state, write $X=Y+iZ$ with $Y$ real symmetric and $Z$ real antisymmetric; then $v^{\mathsf T}Zv=0$, so $v^*Xv=v^{\mathsf T}Yv$. The real parts $Y$ of complex states of rank at most $t$ are exactly the real states of rank at most $2t$: a factorisation $X=WW^*$ with $t$ complex columns gives $Y=\operatorname{Re}W\operatorname{Re}W^{\mathsf T}+\operatorname{Im}W\operatorname{Im}W^{\mathsf T}$ with at most $2t$ real columns, and conversely pairing real columns as real and imaginary parts produces a complex factor with at most $t$ columns. Hence, for real data, $M_t$ may be computed over real states of rank at most $2t$.
+
+\begin{proposition}\label{prop:gap}
+For every $t\ge1$, every configuration of $n$ unit vectors over $\K$ and $s$ as above,
+\[
+ M_t(v)\le g_{\K}(s)^n\,q(v),\qquad
+ \lim_{n\to\infty}\ \sup_v\big(M_t(v)/q(v)\big)^{1/n}=g_{\K}(s),
+\]
+where the supremum is over all configurations of $n$ unit vectors in $\K^d$.
+\end{proposition}
+\begin{proof}
+\emph{Upper bound.} Take a state $X$ attaining $M_t$, replaced by its real part in the real case. Its range has dimension at most $s$; enlarge it to an $s$-dimensional subspace $E$ (real in the real case). The maximal product is positive, since a generic unit vector has nonzero inner product with each $v_i$. Write $w_i=X^{1/2}v_i$; each is nonzero and lies in $E$.
+
+In the complex case let $u$ be uniformly distributed on the unit sphere of $E$ and put $x=X^{1/2}u/\norm{X^{1/2}u}$, a unit vector with $|x^*v_i|^2=|u^*w_i|^2/(u^*Xu)$. For $s\ge2$ the ratio $|u^*w_i|^2/\norm{w_i}^2$ has the beta distribution with parameters $1$ and $s-1$, so its mean logarithm is $\psi(1)-\psi(s)=-H_{s-1}$; here we use $\mathbb E\log T=\psi(\alpha)-\psi(\alpha+\beta)$ for $T\sim\operatorname{Beta}(\alpha,\beta)$, which follows by differentiating the beta integral. Since $\mathbb E(uu^*)=I_E/s$ and $\tr X=1$, Jensen's inequality gives $\mathbb E\log(u^*Xu)\le\log\mathbb E(u^*Xu)=-\log s$. Therefore
+\[
+ \mathbb E\log|x^*v_i|^2\ge \log(v_i^*Xv_i)-H_{s-1}+\log s .
+\]
+Summing over $i$, some unit vector $x$ does at least as well as the expectation, so $\log q\ge\log M_t-n(H_{s-1}-\log s)$, which is the claim. At $s=1$ (in either field) the bound is $M_t\le q$, which is immediate because a state supported on one dimension is pure.
+
+In the real case with $s\ge2$, let $p_1,p_2$ be a uniformly distributed orthonormal pair in $E$, put $u=(p_1+ip_2)/\sqrt2$ and define $x$ as before. For real $w$, $2|u^*w|^2=\langle p_1,w\rangle^2+\langle p_2,w\rangle^2$ is the squared length of the projection of $w$ onto a random two-plane. Divided by $\norm w^2$, this has the beta distribution with parameters $1$ and $(s-2)/2$ when $s>2$ (divide sums of squared Gaussian coordinates by the total), and equals one when $s=2$. In both cases
+\[
+ \mathbb E\log|u^*w_i|^2=\log\norm{w_i}^2-\log2+\psi(1)-\psi(s/2).
+\]
+The cross terms $\tfrac i2(p_2p_1^{\mathsf T}-p_1p_2^{\mathsf T})$ of $uu^*$ have mean zero, so again $\mathbb E(uu^*)=I_E/s$ and $\mathbb E\log(u^*Xu)\le-\log s$. Summing as before proves the real upper bound.
+
+\emph{Sharpness.} Choose a sequence of unit vectors in $\K^s\subseteq\K^d$ whose empirical measures converge weakly to the invariant probability measure $\nu$ on the unit sphere of $\K^s$; independent uniform samples have this property almost surely. In either field the state $I/s$ on $\K^s$ gives $M_t(v)\ge s^{-n}$; in the real case with $s>t$ it is admissible because it is the real part of a complex state of rank at most $t$. In $q$ we may restrict $u$ to unit vectors in $\C^s$, because orthogonal projection onto $\C^s$ preserves every $u^*v_i$ and does not increase $\norm u$. For each $n$ choose a maximiser $x_n$, and pass to a subsequence along which $n^{-1}\log q$ converges to its upper limit and $x_n\to x$. For $B>0$ the truncated kernel $(v,y)\mapsto\max\{\log|y^*v|^2,-B\}$ is continuous on the product of the two unit spheres. Uniform continuity and weak convergence bound the upper limit of $n^{-1}\log q$ by $\int\max\{\log|x^*v|^2,-B\}\,d\nu(v)$, and letting $B\to\infty$ (monotone convergence) gives
+\[
+ \limsup_n n^{-1}\log q(v)\le \max_{\norm x=1}\int\log|x^*v|^2\,d\nu(v).
+\]
+For complex invariant data the integral equals $-H_{s-1}$ for every $x$. For real invariant data write $x=a+ib$ with $a,b$ real; then $|x^*v|^2=v^{\mathsf T}(aa^{\mathsf T}+bb^{\mathsf T})v$, a quadratic form of trace one and rank at most two. By rotational invariance the integral is a symmetric concave function of the two potentially nonzero eigenvalues, so it is maximised when both equal $1/2$, where the beta computation above gives $-\log2+\psi(1)-\psi(s/2)$ (for $s=1$ the integral is $0$). Hence $\liminf_n n^{-1}\log(M_t/q)\ge\log g_\K(s)$ along these configurations, which with the upper bound proves the limit.
+\end{proof}
+
+\begin{lemma}\label{lem:monotone}
+Both $g_\C(d)$ and $g_\R(d)$ ($d\ge2$) are strictly increasing in $d$, satisfy $g_\R(2t)=g_\C(t)$, and tend to $e^\gamma$; in particular $g_\K(d)<e^\gamma$ for every $d$.
+\end{lemma}
+\begin{proof}
+$\log g_\C(d+1)-\log g_\C(d)=1/d-\log(1+1/d)>0$, and $H_{d-1}-\log d\to\gamma$. For the real case, $\log g_\R(d)=\log 2+\psi(d/2)-\psi(1)-\log d=\psi(d/2)-\log(d/2)+\gamma$, and $x\mapsto\psi(x)-\log x$ is strictly increasing on $(0,\infty)$ with limit $0$ (its derivative $\psi'(x)-1/x$ is positive, since $\psi'(x)=\sum_{k\ge0}(x+k)^{-2}>\int_0^\infty(x+y)^{-2}\,dy=1/x$). The identity follows from $\psi(t)-\psi(1)=H_{t-1}$.
+\end{proof}
+
+\begin{remark}
+For $t\ge d$ the objective $\sum_i\log v_i^*Xv_i$ is concave on the convex set of states, so $M_d(v)$ can be computed for any given configuration by convex optimisation; Proposition~\ref{prop:compare} then estimates $\norm{\Pi(A)}$ within the factor $D_{n,d^2}$ once $q(v)$ or $\per A$ is known.
+\end{remark}
+
+\section{The Schur power: proofs of Theorems~\ref{thm:full} and~\ref{thm:unrestricted}}\label{sec:schur}
+This section combines the comparisons with the gaps.
+
+\begin{proof}[Proof of Theorem~\ref{thm:full}]
+By \eqref{eq:pure} and \eqref{eq:mixed},
+\[
+ \frac{M_d(v)}{D_{n,d}\,q(v)}\le\frac{\norm{\Pi(A)}}{\per A}\le D_{n,d^2}\frac{M_d(v)}{q(v)} .
+\]
+For fixed $d$ the factors $D_{n,d}$ and $D_{n,d^2}$ are polynomial in $n$. Proposition~\ref{prop:gap} with $t=d$, where $s=d$ in both fields, therefore gives $\limsup_nS_{\K,d}(n)^{1/n}\le g_\K(d)$ from the upper bound and $\liminf_nS_{\K,d}(n)^{1/n}\ge g_\K(d)$ from the sharpness part, so the limit exists. The equidistributed configurations used for sharpness span $\K^d$ once $n$ is large, so the same lower bound holds with Gram rank exactly $d$, and the upper bound is unaffected by the restriction.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:unrestricted}]
+(a) If some diagonal entry of $A$ vanishes, the corresponding row and column vanish, every entry of $\Pi(A)$ contains a factor from that row, and both sides are zero. Otherwise rescale to a correlation matrix, which multiplies both sides by the same factor, and write it as the Gram matrix of unit vectors in $\K^d$. By \eqref{eq:mixed}, Proposition~\ref{prop:gap} with $t=d$, and \eqref{eq:pure},
+\[
+ \norm{\Pi(A)}\le n!\,D_{n,d^2}M_d(v)\le n!\,D_{n,d^2}\,g_\K(d)^nq(v)\le D_{n,d^2}\,g_\K(d)^n\per A,
+\]
+and $D_{n,d^2}=\binom{n+d^2-1}{n}$.
+
+(b) The upper bound is \cite[Theorem~2]{AGGS}. For the lower bound, Theorem~\ref{thm:full} gives $g_\K(d)\le c^*$ for every $d$, and Lemma~\ref{lem:monotone} gives $\sup_dg_\K(d)=e^\gamma$.
+
+(c) Put $k=d(n)^2-1$. Then $\log\binom{n+k}{k}\le k\log(e(n+k)/k)=k+k\log(1+n/k)=o(n)$, because $k/n\to0$ and $x\log(1+1/x)\to0$ as $x\to0$; so by (a) and Lemma~\ref{lem:monotone} the supremum is at most $e^{o(1)}e^\gamma$. Conversely, for each fixed $d'$ we have $d(n)\ge d'$ for large $n$, so the supremum is at least $S_{\K,d'}(n)^{1/n}\to g_\K(d')$; letting $d'\to\infty$ gives the lower bound $e^\gamma$.
+\end{proof}
+
+\begin{remark}
+Theorem~\ref{thm:full} is an iterated limit: the rank is fixed while $n\to\infty$. No uniformity in $d$ is claimed beyond Theorem~\ref{thm:unrestricted}(c). For rank of order $\sqrt n$ or larger the factor $D_{n,d^2}$ is no longer subexponential. Part (c) concerns the asymptotic rate; it does not determine the constant $c^*$, which must hold at every $n$, and whether $c^*=e^\gamma$ remains open (Section~\ref{sec:open}).
+\end{remark}
+
+\section{Balanced permanental compounds and Pate's inequality}\label{sec:compounds}
+This section shows that permanental compounds built from a balanced split of the indices exhibit the same exponential rates, with the rank replaced by an effective rank depending on the number of parts.
+
+Split the $n$ positions into $t$ labelled parts of sizes $\alpha=(\alpha_1,\dots,\alpha_t)$, zero sizes allowed, and put $N_\alpha=n!/\prod_j\alpha_j!$. For two ordered set partitions $I=(I_1,\dots,I_t)$ and $J=(J_1,\dots,J_t)$ with $|I_j|=|J_j|=\alpha_j$, define
+\[
+ (C_\alpha(A))_{I,J}=\prod_{j=1}^t\per A[I_j,J_j],
+\]
+where $A[I_j,J_j]$ is the submatrix with rows $I_j$ and columns $J_j$. For $t=2$ and $\alpha=(k,n-k)$ this is the matrix $C_k(A)$ of Pate, with entries $\per A[\alpha|\beta]\per A(\alpha|\beta)$ \cite[Section~3]{Pate}. Every row of $C_\alpha(A)$ sums to $\per A$. A composition $\beta$ is \emph{balanced} if its entries differ by at most one. For a positive semidefinite matrix $G$ of order $N$ define the best $0/1$ test
+\[
+ R(G)=\max_{\varnothing\ne E}\frac{\mathbf1_E^*G\mathbf1_E}{|E|},
+\]
+where $\mathbf 1_E$ is the indicator vector of a nonempty set $E$ of indices.
+
+\begin{theorem}\label{thm:balanced}
+For fixed $d,t\ge1$ and balanced compositions $\beta$ of $n$ into $t$ parts, the sharp exponential base of $\lambda_{\max}(C_\beta(A))/\per A$ over Gram matrices of configurations in $\K^d$ is $g_\C(\min(d,t))$ if $\K=\C$ and $g_\R(\min(d,2t))$ if $\K=\R$. The same bases hold for $R(C_\beta(A))/\per A$. In particular, for $t=2$ ($k=\lfloor n/2\rfloor$) the base is $e/2$ for every fixed complex $d\ge2$, $e^2/6$ for real $d=3$, and $e/2$ for every fixed real $d\ge4$.
+\end{theorem}
+
+\begin{proof}
+\emph{Upper bound.} For each ordered partition $I$ let $w_I=\bigotimes_{j=1}^tP_{\alpha_j,d}\big(\bigotimes_{i\in I_j}v_i\big)$, the tensor product over the parts of the symmetrised products of the vectors in each part. Then $\langle w_I,w_J\rangle=\prod_j\per A[I_j,J_j]/\alpha_j!$, so the Gram matrix of the $w_I$ is $C_\alpha(A)/\prod_j\alpha_j!$, and $\lambda_{\max}(C_\alpha)/n!$ is the norm of $T=N_\alpha^{-1}\sum_Iw_Iw_I^*$. For unit vectors $u_1,\dots,u_t\in\C^d$ put
+\[
+ G_\alpha(u)=N_\alpha^{-1}\sum_I\prod_{j=1}^t\prod_{i\in I_j}|u_j^*v_i|^2=\Big\langle\textstyle\bigotimes_ju_j^{\otimes\alpha_j},\,T\,\bigotimes_ju_j^{\otimes\alpha_j}\Big\rangle .
+\]
+This gives $\max_uG_\alpha(u)\le\norm T$. Conversely, $T=QTQ$ with $Q=\bigotimes_jP_{\alpha_j,d}$, so applying the resolution of Proposition~\ref{prop:compare} in each part,
+\[
+ \norm T\le\tr T=\tr(TQ)=\Big(\prod_jD_{\alpha_j,d}\Big)\int G_\alpha(u)\,d\mu(u_1)\cdots d\mu(u_t)\le\Big(\prod_jD_{\alpha_j,d}\Big)\max_uG_\alpha(u).
+\]
+Now set $p_j=\alpha_j/n$ and form the state $X=\sum_jp_ju_ju_j^*$, of rank at most $t$. Expanding $\prod_iv_i^*Xv_i=\prod_i\sum_jp_j|u_j^*v_i|^2$ and grouping terms by the number of factors taken from each $j$, the terms of type $\alpha$ contribute $G_\alpha(u)$ times the multinomial probability $N_\alpha\prod_jp_j^{\alpha_j}$ (with $0^0=1$). This probability is at least $(n+1)^{-t}$, because the type $\alpha$ is a mode of the multinomial law with cell probabilities $p=\alpha/n$ and there are at most $(n+1)^t$ types. To see the mode property, compare any type $\beta$ with $\alpha$: the ratio of their probabilities is $\prod_j\alpha_j^{\beta_j-\alpha_j}\alpha_j!/\beta_j!$, and each factor is at most one, since $\beta_j!/\alpha_j!=(\alpha_j+1)\cdots\beta_j\ge\alpha_j^{\beta_j-\alpha_j}$ when $\beta_j\ge\alpha_j$ and $\alpha_j!/\beta_j!=(\beta_j+1)\cdots\alpha_j\le\alpha_j^{\alpha_j-\beta_j}$ otherwise (a cell with $\alpha_j=0<\beta_j$ has probability zero). Hence $\max_uG_\alpha(u)\le(n+1)^tM_t(v)$ and $\lambda_{\max}(C_\alpha)/n!\le(n+1)^t\prod_jD_{\alpha_j,d}\,M_t(v)$.
+
+\emph{Lower bound.} The spectral decomposition of a state of rank at most $t$ writes its product objective as a convex combination of the values $G_\alpha(u)$ over all compositions $\alpha$ of $n$ into $t$ parts. Each $G_\alpha(u)$ is at most $\lambda_{\max}(C_\alpha)/n!$, and we now show that $\lambda_{\max}(C_\alpha)\le\lambda_{\max}(C_\beta)$ for balanced $\beta$. Let the symmetric group act on ordered partitions of type $\alpha$ by permuting elements, with permutation matrices $P_\sigma$, and put $a(\sigma)=\prod_ia_{i,\sigma(i)}$. Grouping permutations by the images of the parts shows that $\sum_\sigma a(\sigma)P_\sigma$ is the transpose of $C_\alpha$, which has the same spectrum. Suppose two parts have sizes $p<q$ with $q-p\ge2$, and transfer one position from the larger to the smaller. Holding the other parts fixed, the corresponding incidence map $U$ sends each ordered partition to the sum of the ordered partitions obtained by one such transfer; on the two parts concerned it is the inclusion map $U_p$ from $p$-subsets to $(p+1)$-subsets of the $p+q$ positions they occupy. Counting equal and adjacent subsets gives
+\[
+ U_p^*U_p-U_{p-1}U_{p-1}^*=(q-p)I,
+\]
+with the second term absent when $p=0$. Hence $U$ is injective. It intertwines the two permutation actions, so it embeds the first permutation module into the second and preserves every eigenvalue of $\sum_\sigma a(\sigma)P_\sigma$, with multiplicity. (Equivalently, the first module is a direct summand of the second by Young's rule.) Repeating the transfer reaches a balanced composition; balanced compositions differ only by relabelling the parts, which gives isomorphic modules. Thus $M_t(v)\le\lambda_{\max}(C_\beta)/n!$.
+
+Combining both bounds with \eqref{eq:pure}, the ratio $\lambda_{\max}(C_\beta)/\per A$ lies between $M_t/(D_{n,d}q)$ and a polynomial times $M_t/q$, and Proposition~\ref{prop:gap} gives the sharp bases.
+
+\emph{Binary test.} Always $R(G)\le\lambda_{\max}(G)$. Conversely, for positive semidefinite $G$ of order $N$, $\lambda_{\max}(G)\le4d_NR(G)$ with $d_N=\sum_{j=1}^N(\sqrt j-\sqrt{j-1})^2\le1+\tfrac14(1+\log N)$ (each term with $j\ge2$ equals $(\sqrt j+\sqrt{j-1})^{-2}\le1/(4(j-1))$): split a vector into the positive and negative parts of its real and imaginary parts, write each nonnegative part with decreasing coordinates $x_j$ as a nonnegative combination of indicators of prefixes, and apply the triangle inequality for $\norm x_G=\sqrt{x^*Gx}$ followed by Cauchy--Schwarz. This layer-cake lemma is \cite[Lemma~2.1]{EPBS}; up to constants it also follows from a general inequality of Lev \cite[Theorem~2]{Lev}. Since $N_\beta\le t^n$, the factor $4d_N$ is $O_t(n)$, so $R(C_\beta)$ has the same sharp base.
+\end{proof}
+
+\paragraph{Pate's inequality and conjecture.}
+Pate stated that $\langle C_k(A)x,x\rangle\le\norm x^2\per A$ for every $0/1$ vector $x$, every $k$ and every positive semidefinite $A$ \cite[Theorem~7]{Pate}, and conjectured that $\per A$ is the largest eigenvalue of every $C_k(A)$ \cite[Conjecture~2]{Pate}. For $k=1$ the $0/1$ inequality is true \cite[Corollary~3]{Pate}. Finite counterexamples to the eigenvalue conjecture were found for $k=1$ by Drury \cite{Drury18} and for $k=2$ by Tran \cite{Anh}. Chalmers gave the first real counterexample for $k=1$ \cite{Chalmers}. The companion release shows that the $0/1$ inequality fails for every fixed $k\ge2$, by a factor of at least order $(\log n)^{k-1}$, and that for $k=1$ the eigenvalue ratio grows exactly like $\log n$ (complex) or $\tfrac12\log n$ (real) \cite{EPBS}. Theorem~\ref{thm:balanced} shows that at the balanced order $k=\lfloor n/2\rfloor$ both statements fail exponentially, with sharp base $e/2$ already at complex rank two and $e^2/6$ at real rank three.
+
+\section{Anomalous boson bunching}\label{sec:optics}
+This section translates the results into the probability that photons with partially distinguishable internal states leave an interferometer through a designated set of output modes.
+
+\paragraph{The model.}
+Consider an interferometer on $N$ spatial modes, described by a unitary $U$, with the convention that a photon entering input mode $j$ leaves in output mode $l$ with amplitude $U_{lj}$; that is, column $j$ of $U$ is the output mode function of input $j$. The interferometer leaves internal states unchanged. Photon $i$ enters input mode $i$ ($1\le i\le n$) with internal state $\varphi_i\in\C^t$, a unit vector; write $S_{ij}=\varphi_i^*\varphi_j$, a correlation matrix of rank at most $t$. Let $\mathcal K$ be a set of designated output modes and $H_{ij}=\sum_{l\in\mathcal K}\overline{U_{li}}U_{lj}$. The probability that all $n$ photons are detected in $\mathcal K$, with internal states not resolved, is
+\begin{equation}\label{eq:bunching}
+ P(S)=\per(H\circ S),
+\end{equation}
+where $\circ$ is the entrywise product. Indeed, in first quantisation the input is the normalised symmetrisation of $\bigotimes_ix_i$ with $x_i=e_i\otimes\varphi_i$ (orthogonal, because the input modes are distinct), the output is obtained by applying $U\otimes I$ to each factor, and the probability of the projector $(Q\otimes I)^{\otimes n}$, with $Q$ the projector onto the designated modes, is the permanent of the matrix $\langle (U\otimes I)x_i,(Q\otimes I)(U\otimes I)x_j\rangle=H_{ij}S_{ij}$. Other conventions for $U$ in the literature change $H$ or $S$ by transposition or complex conjugation (for instance \cite[Eq.~(4)]{SNC} is written with $S^{\mathsf T}$); such changes preserve the class of correlation matrices of each rank and do not affect any rate below. Identical photons ($S=J$, the all-ones matrix) give $P(J)=\per H$.
+
+\paragraph{Realising a Gram matrix.}
+Given a configuration $v_1,\dots,v_n\in\K^d$ with Gram matrix $A$, let $V$ be the $d\times n$ matrix with columns $v_i$ and choose $c>0$ with $c^2A\preceq I$. The $(d+n)\times n$ matrix obtained by stacking $cV$ above $(I-c^2A)^{1/2}$ has orthonormal columns, and completing it to a unitary $U$ on $N=d+n$ modes (real orthogonal if $V$ is real) gives an interferometer whose first $d$ output modes form $\mathcal K$ and for which $H=c^2A$. Thus
+\[
+\frac{P(S)}{P(J)}=\frac{\per(A\circ S)}{\per A}.
+\]
+For fixed $t$, write $B_t(A)=\max_S\per(A\circ S)/\per A$ over correlation matrices $S$ of rank at most $t$; this is the largest enhancement of bunching into the $d$ designated modes over identical photons.
+
+\begin{corollary}\label{cor:hadamard}
+For fixed $d,t\ge1$, the sharp exponential base of $B_t(A)$ over Gram matrices of configurations in $\K^d$ is $g_\C(\min(d,t))$ for $\K=\C$ and $g_\R(\min(d,2t))$ for $\K=\R$, the same as in Theorem~\ref{thm:balanced}. For $t\ge d$ the single choice $S=\overline A$ (internal states $\varphi_i=\overline{v_i}$) already attains the full base $g_\K(d)$; for real $A$ this is the Hadamard square $A\circ A$.
+\end{corollary}
+\begin{proof}
+Write $S_{ij}=\varphi_i^*\varphi_j$ with unit vectors $\varphi_i\in\C^t$; then $A\circ S$ is the Gram matrix of the vectors $v_i\otimes\varphi_i\in\C^d\otimes\C^t$. For a unit vector $z\in\C^d\otimes\C^t$ with first marginal $X$, maximising $|z^*(v_i\otimes\varphi_i)|^2$ over the unit vector $\varphi_i$ gives $v_i^*Xv_i$ by Cauchy--Schwarz, and every state of rank at most $t$ arises as such a marginal. Therefore the maximum over $z$ and all $\varphi_i$ of $\prod_i|z^*(v_i\otimes\varphi_i)|^2$ equals $M_t(v)$. Applying \eqref{eq:pure} in dimension $dt$ shows that $\max_S\per(A\circ S)/n!$ lies between $M_t(v)$ and $D_{n,dt}M_t(v)$; dividing by \eqref{eq:pure} for $A$ and applying Proposition~\ref{prop:gap} proves the first claim. For $S=\overline A$, the vector $z=d^{-1/2}\sum_{j=1}^de_j\otimes e_j$ has squared overlap $1/d$ with every $v_i\otimes\overline{v_i}$, so the pure product for the vectors $v_i\otimes\overline{v_i}$ is at least $d^{-n}$; for the equidistributed configurations of Proposition~\ref{prop:gap} this gives the base $g_\K(d)$.
+\end{proof}
+
+\paragraph{Comparison with earlier optical results.}
+Drury's complex counterexample to the Bapat--Sunder inequality already used the conjugate mask $B=\overline A$ on a $7\times7$ correlation matrix \cite{Drury16}, and his real counterexample uses $B=A$ \cite{Drury17}. Seron, Novo and Cerf turned such examples into interferometers and found a family with two-dimensional internal states whose enhancement grows linearly in $n$ \cite{SNC}. Corollary~\ref{cor:hadamard} shows that growth is in fact exponential already with two designated output modes and two-dimensional internal states (polarisation), with sharp base $e/2$. In a real orthogonal interferometer three designated outputs and two-dimensional complex internal states give the sharp base $e^2/6$; with two designated outputs a real interferometer gives base $g_\R(2)=1$, and in fact no enhancement at all for any finite $n$ \cite{Liq}, \cite[Appendix~A]{EPBS}. The quantity here is a finite change of internal states; the local response to small time delays near identical photons is studied in \cite{PNC,PNC26}, whose general framework also uses the Gram matrix of the vectors $v_i\otimes\varphi_i$ \cite{PNC26}.
+
+\section{Explicit polarisation designs}\label{sec:designs}
+This section gives exact finite values for two symmetric polarisation sets, repeated many times, and discusses the physical scale of the effect.
+
+Both designs are unit spinors $v_1,\dots,v_L\in\C^2$ with $\sum_jv_jv_j^*=(L/2)I$. Repeat each spinor $m$ times, let $A_m$ be the Gram matrix of the resulting $n=Lm$ vectors, and use internal states $\varphi_i=\overline{v_i}$, so that $S=\overline{A_m}$. For any state $X$ the $L$ overlaps $v_j^*Xv_j$ sum to $L/2$, so $M_2(v)\le 2^{-L}$ per repetition, with equality at $X=I/2$; the maximally entangled vector of Corollary~\ref{cor:hadamard} attains $2^{-L}$ for the vectors $v_i\otimes\overline{v_i}$. Hence the proof of Corollary~\ref{cor:hadamard} (equation~\eqref{eq:pure} in dimension four for the masked permanent and in dimension two for $\per A_m$) gives
+\[
+ \lim_{m\to\infty}\left[\frac{\per(A_m\circ\overline{A_m})}{\per A_m}\right]^{1/m}=\frac{2^{-L}}{q_1},
+\]
+where $q_1$ is the maximal pure product $\max_{\norm u=1}\prod_{j=1}^L|u^*v_j|^2$ of one copy. The two rows of the $2\times n$ matrix with columns $v_i/\sqrt{Lm/2}$ are orthonormal, so this matrix extends to a unitary on $n$ modes, and for this interferometer the probabilities that all photons reach the two designated outputs are $\per A_m/(Lm/2)^n$ (identical photons) and $\per(A_m\circ\overline{A_m})/(Lm/2)^n$.
+
+\paragraph{The tetrahedron.}
+Let $\omega=e^{2\pi i/3}$ and take $v_0=(1,0)^{\mathsf T}$ and $v_{j+1}=3^{-1/2}(1,\sqrt2\,\omega^j)^{\mathsf T}$ for $0\le j<3$. Their Bloch vectors form a regular tetrahedron and $\sum_jv_jv_j^*=2I$. For a pure state the four overlaps $p_j$ satisfy $\sum p_j=2$ and $\sum p_j^2=4/3$. At a positive maximum of $\prod p_j$ under these two constraints, Lagrange multipliers give $1/p_j=\alpha+\beta p_j$, so at most two distinct values occur; checking the possible multiplicities gives $1/27$ for one large coordinate, $1/36$ for two, and $0$ for three. Aligning the pure state with $v_0$ attains $q_1=1/27$, the closest product state of the symmetric tetrahedral state studied in \cite{AMM}. The limit is $27/16$ per repetition of four photons, that is $(27/16)^{1/4}=1.1398\ldots$ per photon.
+
+For exact values, the product of the four linear forms $z\mapsto v_j^{\mathsf T}z$ is $3^{-3/2}x(x^3+2\sqrt2\,y^3)$ in coordinates $z=(x,y)$. The Wick formula $\per A=\norm{\prod_i\ell_i}^2$, where $\ell_i(z)=v_i^{\mathsf T}z$ and the norm assigns $\norm{x^py^q}^2=p!\,q!$ to monomials, gives
+\[
+ \per A_m=3^{-3m}\sum_{j=0}^m\binom mj^2 8^j(4m-3j)!\,(3j)!.
+\]
+In the masked matrix the entries are $1$ within each block of repeated vectors and $1/3$ across blocks, so $3(A_m\circ\overline{A_m})$ is the all-ones matrix plus $2$ in each diagonal block. Choosing $h$ correction entries in one block on distinct rows and columns can be done in $\binom mh^2h!$ ways, each weighted by $2^h$, and the remaining $4m-\sum h_j$ rows are matched arbitrarily, so
+\[
+ \per(A_m\circ\overline{A_m})=3^{-4m}\sum_{0\le h_1,\dots,h_4\le m}\Big(4m-\textstyle\sum_jh_j\Big)!\prod_{j=1}^4\binom m{h_j}^{\!2}h_j!\,2^{h_j}.
+\]
+The ratio is $7/9$, $377/405$ and $102469/74115=1.3826\ldots$ for $m=1,2,3$; it first exceeds one at twelve photons, and it equals $50.26\ldots$ at $m=10$ (forty photons). The identical-photon probability is $305/6377292\approx4.78\times10^{-5}$ at twelve photons and about $1.61\times10^{-18}$ at forty.
+
+\paragraph{The six standard polarisations.}
+The octahedral set $H,V,D,A,R,L$, with $v=(1,0)$, $(0,1)$, $(1,\pm1)/\sqrt2$, $(1,\pm i)/\sqrt2$, satisfies $\sum_jv_jv_j^*=3I$. For a pure state with Bloch vector $(n_1,n_2,n_3)$ the product of the six overlaps is $\prod_{a}(1-n_a^2)/64$, which is maximal at $n_a^2=1/3$, so $q_1=1/216$. The limit is $216/64=27/8$ per repetition of six photons, that is $(27/8)^{1/6}=\sqrt{3/2}=1.2247\ldots$ per photon. The product of the six linear forms is $xy(x^4-y^4)/4$, so
+\[
+ \per A_m=16^{-m}\sum_{j=0}^m\binom mj^2(m+4j)!\,(5m-4j)!,
+\]
+and $\per(A_m\circ\overline{A_m})$ is the Wick norm of the $m$th power of the product of the six linear forms $z\mapsto(v_j\otimes\overline{v_j})^{\mathsf T}z$ on $\C^2\otimes\C^2$, whose coefficients are Gaussian integers after scaling by $2$. The ratio is $14/15$ at $m=1$, $62731/28800=2.178\ldots$ at twelve photons and $64385639/10348800=6.22\ldots$ at eighteen; it exceeds $650$ at forty-two photons and $24\,000$ at sixty. The identical-photon probabilities in the interferometer above are about $3.0\times10^{-5}$ at twelve photons and $3.1\times10^{-8}$ at eighteen. The per-photon root of the ratio is still $1.18$ at sixty photons, so convergence to $\sqrt{3/2}$ is slow.
+
+\paragraph{Physical scale.}
+These are exact predictions of the standard model of partial distinguishability in a lossless interferometer, not experimental observations. The enhancement is a ratio of two small probabilities: the event that all photons reach two designated outputs is rare in both cases, and its rate in an experiment would also depend on source and detector efficiencies, which are not modelled here. The regime of a few repetitions (twelve to eighteen photons, with enhancements between about $1.4$ and $6$ and identical-photon probabilities of order $10^{-5}$ to $10^{-8}$) is where a test of exponential enhancement is least demanding. The six standard polarisations give larger enhancement than the tetrahedron at equal photon number, and both stay below the sharp base $e/2$ per photon, as Theorem~\ref{thm:rigidity} requires for any design with a bounded number of directions (the bunching ratio never exceeds the Schur ratio, since $\per(A\circ S)\le\norm{\Pi(A)}$ for every correlation matrix $S$, by the argument in \cite[Section~1]{Drury17}, which applies verbatim to complex $S$).
+
+\section{Open problems}\label{sec:open}
+This section lists questions that the present methods leave open.
+\begin{enumerate}
+\item \emph{Unrestricted rank.} Is the asymptotic rate of $\sup_A(\norm{\Pi(A)}/\per A)^{1/n}$ over all positive semidefinite $A$ equal to $e^\gamma$, and is $c^*=e^\gamma$ in Theorem~\ref{thm:unrestricted}(b)? The first would follow from a bound $\norm{\Pi(A)}\le e^{o(n)}\widehat P(A)$ and the second from $\norm{\Pi(A)}\le\widehat P(A)$, with the estimator $\widehat P$ of \cite{AE26}, which satisfies $\per A\le\widehat P(A)\le e^{\gamma n}\per A$. Theorem~\ref{thm:unrestricted}(c) settles the asymptotic rate for rank $o(\sqrt n)$.
+\item \emph{Unbalanced compounds.} Determine the rate of $C_{(k,n-k)}$ when $k/n\to\kappa\in(0,1/2)$, interpolating between growth at least of order $(\log n)^{k-1}$ at fixed $k$ \cite{EPBS} and the balanced base of Theorem~\ref{thm:balanced}.
+\item \emph{Few polarisation states.} For designs with $L$ distinct directions, used both for the interferometer columns $v_i$ and for the internal states $\overline{v_i}$, what is the best per-photon base? The tetrahedron ($L=4$) gives $1.1398$, the octahedron ($L=6$) gives $1.2247$, and Theorem~\ref{thm:rigidity} shows that every fixed $L$ stays below $e/2$, because the bunching ratio never exceeds the Schur ratio. What happens when only the internal states are restricted is open.
+\item \emph{Finite orders.} Give explicit lower bounds for $S_{\K,d}(n)$ at moderate $n$, and determine the least order at which a real rank-three Hadamard square exceeds its permanent.
+\end{enumerate}
+
+\appendix
+\section{The extremal distribution of directions}\label{app:rigidity}
+This appendix characterises the configurations that attain the full exponential base. For a configuration of unit vectors write the \emph{Schur ratio} $\norm{\Pi(A)}/\per A$. The implication from nearly constant logarithmic potentials to equidistribution is related to Simanek's work on Chebyshev constants \cite{Simanek}; we prove the transform needed here directly.
+
+\begin{theorem}\label{thm:rigidity}
+Fix $d\ge2$ over $\C$, or $d\ge3$ over $\R$. Let configurations of unit vectors in $\K^d$ be given for a sequence of lengths $n\to\infty$. The $n$th root of the Schur ratio tends to $g_\K(d)$ if and only if the empirical measures of the projective directions tend weakly to the invariant probability measure. Consequently, for every $K$ there is $\eta_K>0$ such that every sequence of configurations with at most $K$ distinct directions satisfies $\limsup_n(\text{Schur ratio})^{1/n}\le g_\K(d)-\eta_K$.
+\end{theorem}
+\begin{proof}
+Sufficiency follows from the truncated-integral argument in the proof of Proposition~\ref{prop:gap}, since all kernels there are projectively invariant.
+
+Conversely, by Proposition~\ref{prop:compare} the hypothesis gives $n^{-1}\log(M_d/q)\to\log g_\K(d)$. Let $X_n$ attain $M_d$, taking a real state for real data. In the rounding proof of Proposition~\ref{prop:gap}, with $u$ uniform in the complex case and $u=(p_1+ip_2)/\sqrt2$ in the real case, the whole Jensen loss per factor is
+\[
+ \mathcal L(X_n)=-\log d-\mathbb E\log(u^*X_nu)\ge0,
+\]
+and the proof gives $n^{-1}\log(M_d/q)\le\log g_\K(d)-\mathcal L(X_n)$. Hence $\mathcal L(X_n)\to0$. By Fatou's lemma $\mathcal L$ is lower semicontinuous on the compact set of states. It vanishes only at $I/d$: in the complex case $u^*Xu$ must be constant, and in the real case the trace of $X$ on every two-plane must be constant, so all sums of two eigenvalues agree, which forces equal eigenvalues when $d\ge3$. Hence $X_n\to I/d$. Since $d^{-n}\le M_d\le\lambda_{\max}(X_n)^n$, we get $n^{-1}\log M_d\to-\log d$ and therefore $n^{-1}\log q\to c_\K:=-\log d-\log g_\K(d)$.
+
+Write $F_n(u)=n^{-1}\sum_i\log|u^*v_i|^2$ for the random test vectors $u$ above. Its mean is exactly $c_\K$, whatever the configuration, by the beta computations in Proposition~\ref{prop:gap}, and its supremum is at most $n^{-1}\log q$. Hence $\norm{F_n-c_\K}_{L^1}=2\,\mathbb E(F_n-c_\K)^+\le2(n^{-1}\log q-c_\K)\to0$.
+
+We now invert this potential. Write $r(y,v)=|\langle y,v\rangle|^2$ on projective space. Over $\C$ the kernel is $\phi(r)=\log r$. Over $\R$, first average the two-plane test over all planes containing a uniformly chosen real line $y$; conditional averaging is an $L^1$ contraction and preserves the constant. Up to the additive constant $-\log2$, the resulting kernel is
+\[
+ \phi(r)=\mathbb E_T\log(T+(1-T)r),\qquad T\sim\mathrm{Beta}(1/2,(d-2)/2),
+\]
+because the second direction of the plane is uniform in $y^\perp$, and its squared inner product with the normalised projection of $v$ to $y^\perp$ has this beta law.
+
+For fixed $v$ the invariant distribution of $r(y,v)$ has density proportional to $w(r)=r^{\beta}(1-r)^{\alpha}$ on $(0,1)$, with $(\alpha,\beta)=(d-2,0)$ over $\C$ and $((d-3)/2,-1/2)$ over $\R$. Let $J_k(r)=P_k^{(\alpha,\beta)}(2r-1)$ be the corresponding Jacobi polynomial. For $k\ge1$ we claim the zonal averaging identity
+\[
+ \int\phi(r(u,v))J_k(r(u,z))\,du=\alpha_k J_k(r(v,z)),
+ \qquad \alpha_k\ \text{proportional to}\
+ \int_0^1\phi(r)J_k(r)w(r)\,dr .
+\]
+The left side is a polynomial of degree at most $k$ in the entries of the rank-one projector onto $z$. It is invariant under rotations fixing $v$, so on projective space it is a polynomial of degree at most $k$ in $r(v,z)$: averaging a monomial over the stabiliser of $v$ splits $z$ into its components along and orthogonal to $v$, and phases or signs cancel the unbalanced powers, leaving products of powers of $r$ and $1-r$. Integrating the left side against any polynomial of lower degree in $r(v,z)$ gives zero, by the same averaging with $u$ fixed and Jacobi orthogonality. So the left side is a multiple of $J_k$, and evaluating at $z=v$, where $J_k(1)>0$, gives the multiplier.
+
+Every $\alpha_k$ is nonzero. By the shifted Rodrigues formula its defining integral equals
+\[
+ \frac1{k!}\int_0^1 \phi^{(k)}(r)r^{k+\beta}(1-r)^{k+\alpha}\,dr.
+\]
+In the complex case this is $(-1)^{k-1}/[k(k+\alpha+1)]$; the boundary terms vanish since $(\log r)^{(j)}=O(r^{-j})$ for $j\ge1$. In the real case apply the formula at each fixed $0<T<1$: the derivative $(-1)^{k-1}(k-1)!(1-T)^k/(T+(1-T)r)^k$ has fixed strict sign, and Fubini applies by the bound $|\log(T+(1-T)r)|\le|\log r|$.
+
+Integrate the potentials against $J_k(r(u,z))$ and use the $L^1$ convergence just established. For every $k\ge1$ and every $z$, the empirical averages of $J_k(r(v_i,z))$ tend to zero. Every subsequential weak limit of the empirical measures therefore has the same moments of $r(v,z)$ as the invariant probability, for every $z$. Polarising the homogeneous polynomial $\int|\langle v,z\rangle|^{2k}\,d\mu(v)$ in the real coordinates of $z$ (in $z$ and $\bar z$ over $\C$) determines all projective polynomial moments; these polynomials contain the constants and separate points, so by Stone--Weierstrass they determine the measure.
+
+For the last statement, suppose that for some $K$ no such $\eta_K$ exists. Then there are sequences of configurations with at most $K$ directions whose upper limits approach $g_\K(d)$; choosing one configuration from the $j$th sequence of length $n_j>n_{j-1}$ with $(\text{Schur ratio})^{1/n_j}\ge g_\K(d)-2/j$ gives a single sequence (whose roots are also at most $D_{n_j,d^2}^{1/n_j}g_\K(d)$ by Theorem~\ref{thm:unrestricted}(a)) with at most $K$ directions whose $n$th roots tend to $g_\K(d)$. By the first part its empirical measures tend weakly to the invariant probability. But probability measures supported on at most $K$ points form a weakly closed set that does not contain the invariant probability, a contradiction.
+\end{proof}
+
+\section{Computational checks}\label{sec:checks}
+The results are proved analytically; the accompanying script \texttt{code/verify\_exp\_rates.py} checks constants, identities and every number quoted in Section~\ref{sec:designs}. It confirms to 30 digits that $g_\C(2)=e/2$, $g_\R(3)=e^2/6$, $g_\R(2)=1$ and $g_\R(2t)=g_\C(t)$, and the monotonicity in Lemma~\ref{lem:monotone} for $d<60$. It verifies the tetrahedral and octahedral closed forms against Ryser's formula for the permanent (in floating point, with relative tolerance $10^{-8}$, for $\per A_m$ and the tetrahedral masked permanents with $m\le4$; exactly for the octahedral masked permanents with $m\le3$, which are also computed exactly up to $m=10$ from the Wick norm), and computes all quoted ratios and probabilities in exact rational arithmetic. It checks the incidence identity of Theorem~\ref{thm:balanced} in exact integer arithmetic for $p+q\le8$, the bound of Theorem~\ref{thm:unrestricted}(a) on 36 random configurations of orders $4$ to $6$, and that the order-five complex rank-two counterexample of Shchesnovich \cite[Eq.~(3)]{Shch} (used in complex-conjugate form, which has the same permanent and Schur-power spectrum) has Schur ratio $1.0168$. The maximal pure products $1/27$ and $1/216$ are also confirmed on a Bloch-sphere grid. Results are written to \texttt{results/verification.json}.
+
+\section*{Use of AI tools}
+The results, proofs, verification script and text were produced with substantial assistance from AI systems, and were checked by AI-assisted review and by exact computation. The paper has not been peer reviewed.
+
+\begin{thebibliography}{99}\small\setlength{\itemsep}{1pt}
+\bibitem{AE26} N. Anari and F. Ebrahimnejad. Optimal $e^{(\gamma+o(1))n}$-approximation of the permanent of positive semidefinite matrices. Preprint, 2026. \url{https://arxiv.org/abs/2605.21946}
+\bibitem{AGGS} N. Anari, L. Gurvits, S. Oveis Gharan and A. Saberi. Simply exponential approximation of the permanent of positive semidefinite matrices. In \emph{2017 IEEE 58th Annual Symposium on Foundations of Computer Science (FOCS)}, 914--925, 2017. \url{https://doi.org/10.1109/FOCS.2017.89}
+\bibitem{AMM} M. Aulbach, D. Markham and M. Murao. The maximally entangled symmetric state in terms of the geometric measure. \emph{New J. Phys.} 12 (2010), 073025. \url{https://doi.org/10.1088/1367-2630/12/7/073025}
+\bibitem{Chalmers} L. R. Chalmers. The Bapat--Sunder eigenvalue conjecture fails over the reals. Preprint, 2026. \url{https://arxiv.org/abs/2611.23269}
+\bibitem{CKR} M. Christandl, R. K\"onig and R. Renner. Postselection technique for quantum channels with applications to quantum cryptography. \emph{Phys. Rev. Lett.} 102 (2009), 020504. \url{https://doi.org/10.1103/PhysRevLett.102.020504}
+\bibitem{Drury16} S. Drury. A counterexample to a question of Bapat and Sunder. \emph{Electron. J. Linear Algebra} 31 (2016), 69--70. \url{https://doi.org/10.13001/1081-3810.3178}
+\bibitem{Drury17} S. Drury. A real counterexample to two inequalities involving permanents. \emph{Math. Inequal. Appl.} 20 (2017), 349--352. \url{https://doi.org/10.7153/mia-20-23}
+\bibitem{Drury18} S. Drury. A counterexample to a question of Bapat \& Sunder. \emph{Math. Inequal. Appl.} 21 (2018), 517--520. \url{https://doi.org/10.7153/mia-2018-21-37}
+\bibitem{ENO} F. Ebrahimnejad, A. Nagda and S. Oveis Gharan. On approximability of the permanent of PSD matrices. Preprint, 2024. \url{https://arxiv.org/abs/2404.10959}
+\bibitem{EPBS} Anonymous. Sharp logarithmic growth of the Bapat--Sunder eigenvalue ratio. Version 0.1.0-candidate, Evidence Press, 2026. \url{https://doi.org/10.5281/zenodo.24509057}
+\bibitem{Lev} V. F. Lev. Discrete norms of a matrix and the converse to the expander mixing lemma. \emph{Linear Algebra Appl.} 483 (2015), 158--181. \url{https://doi.org/10.1016/j.laa.2015.05.031}
+\bibitem{Liq} liqsweep. Permanent-on-top holds for real matrices of rank two. Preprint, September 2026. \url{https://github.com/blueberryvertigo/permanent-on-top-rank-two/blob/8a2195b295fe8ab187b895840f3b3238d997292c/pot.typ} (commit \texttt{8a2195b}).
+\bibitem{PR} A. Pappas and S. G. R\'ev\'esz. Linear polarization constants of Hilbert spaces. \emph{J. Math. Anal. Appl.} 300 (2004), 129--146. \url{https://doi.org/10.1016/j.jmaa.2004.06.031}
+\bibitem{Pate} T. H. Pate. On permanental compounds. \emph{Linear Algebra Appl.} 429 (2008), 1093--1101. \url{https://doi.org/10.1016/j.laa.2007.05.019}
+\bibitem{PNC} L. Pioge, L. Novo and N. J. Cerf. Limits of multimode bunching for boson sampling validation: anomalous bunching induced by time delays. Preprint, 2026. \url{https://arxiv.org/abs/2601.13792}
+\bibitem{PNC26} L. Pioge, L. Novo and N. J. Cerf. A unified framework for anomalous boson bunching. Preprint, 2026. \url{https://arxiv.org/abs/2607.19499}
+\bibitem{SNC} B. Seron, L. Novo and N. J. Cerf. Boson bunching is not maximized by indistinguishable particles. \emph{Nature Photonics} 17 (2023), 702--709. \url{https://doi.org/10.1038/s41566-023-01213-0}
+\bibitem{Shch} V. S. Shchesnovich. The permanent-on-top conjecture is false. \emph{Linear Algebra Appl.} 490 (2016), 196--201. \url{https://doi.org/10.1016/j.laa.2015.10.034}
+\bibitem{Simanek} B. Simanek. Asymptotically optimal configurations for Chebyshev constants with an integrable kernel. \emph{New York J. Math.} 22 (2016), 667--675. \url{https://nyjm.albany.edu/j/2016/22-30p.pdf}
+\bibitem{Anh} H. A. Tran. A simple counterexample for the permanent-on-top conjecture. \emph{Math. Inequal. Appl.} 25 (2022), 1--16. \url{https://doi.org/10.7153/mia-2022-25-01}
+\bibitem{YP1} C. Yuan and P. A. Parrilo. Maximizing products of linear forms, and the permanent of positive semidefinite matrices. \emph{Math. Program.} 193 (2022), 499--510. \url{https://doi.org/10.1007/s10107-021-01616-3}
+\bibitem{YP2} C. Yuan and P. A. Parrilo. Semidefinite relaxations of products of nonnegative forms on the sphere. Preprint, 2021. \url{https://arxiv.org/abs/2102.13220}
+\bibitem{Zhang16} F. Zhang. An update on a few permanent conjectures. \emph{Spec. Matrices} 4 (2016). \url{https://doi.org/10.1515/spma-2016-0030}
+\end{thebibliography}
+\end{document}

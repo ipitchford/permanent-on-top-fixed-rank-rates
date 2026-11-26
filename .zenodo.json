@@ -1,0 +1,144 @@
+{
+ "title": "Sharp exponential rates for permanent-on-top and anomalous boson bunching at fixed rank",
+ "upload_type": "publication",
+ "publication_type": "preprint",
+ "description": "<p><strong>Unrefereed research candidate.</strong> The permanent of a positive semidefinite matrix A is always an eigenvalue of its Schur power matrix &Pi;(A), an n! by n! matrix indexed by permutations. The permanent-on-top conjecture (Soules, 1966) asserted that it is the largest eigenvalue; Shchesnovich disproved it in 2016. This release determines how large the ratio ||&Pi;(A)||/per A can become when the rank d of A is fixed and the order n grows.</p><p><strong>Results.</strong> (1) At every fixed rank the ratio grows exponentially with a sharp base: e<sup>H<sub>d-1</sub></sup>/d for complex matrices and 2exp{&psi;(d/2)-&psi;(1)}/d for real ones. The base is e/2 &asymp; 1.36 at complex rank two and e<sup>2</sup>/6 &asymp; 1.23 at real rank three, and both tend to e<sup>&gamma;</sup> &asymp; 1.78. (2) The best constant c* in ||&Pi;(A)|| &le; (c*)<sup>n</sup> per A satisfies e<sup>&gamma;</sup> &le; c* &le; e<sup>1+&gamma;</sup> (the upper bound is due to Anari, Gurvits, Oveis Gharan and Saberi), and e<sup>&gamma;</sup> is the exact asymptotic rate when the rank grows more slowly than &radic;n. An explicit finite bound holds at every order and rank. (3) Balanced permanental compounds have the same sharp bases, so an inequality stated by Pate for 0/1 vectors fails exponentially. (4) In the standard lossless model of partially distinguishable photons, the enhancement of multimode bunching has the same sharp bases; two output modes and polarisation give base e/2. With the six standard polarisations the model enhancement is 62731/28800 &asymp; 2.18 at twelve photons and exceeds 24,000 at sixty photons. (5) Configurations attain the full base only if their directions become equidistributed.</p><p><strong>Credit and limits.</strong> The complex value of the key mixed-pure product gap and its sharpness are due to Yuan and Parrilo (building on Pappas and R&eacute;v&eacute;sz); the link from the Schur power to that gap uses the postselection technique of Christandl, K&ouml;nig and Renner. New here: the link, the real constant, the fixed-rank rates, the lower bound c* &ge; e<sup>&gamma;</sup>, and the compound, optical and rigidity consequences. The rates are asymptotic; whether c* = e<sup>&gamma;</sup> is open; the optical values are exact predictions of the standard model, not experiments, and the absolute probabilities are small (about 3&times;10<sup>-5</sup> at twelve photons).</p><p><strong>Contents.</strong> The paper (LaTeX source and PDF), one Python program (verify_exp_rates.py, 28 checks in exact or declared-tolerance arithmetic) with its JSON output, the bibliography, a machine-readable index, a research-gate record, a review summary, a replay receipt and SHA-256 sums. Companion release: doi:10.5281/zenodo.24509057.</p><p><strong>Assurance.</strong> Written proofs with computational checks. Internal AI-assisted review only: a combined five-perspective Claude review, clean replays, one revision round with extensions, a re-review and a proof audit of new and rewritten proofs. No Astra/Codex review took place. This is not peer review, independent reproduction or formal verification. Creator: Anonymous. Text CC0-1.0; code MIT.</p>",
+ "creators": [
+  {
+   "name": "Anonymous"
+  }
+ ],
+ "access_right": "open",
+ "license": "cc-zero",
+ "version": "0.1.0-candidate",
+ "publication_date": "2026-11-26",
+ "keywords": [
+  "permanent",
+  "permanent-on-top conjecture",
+  "Schur power",
+  "positive semidefinite matrices",
+  "permanental compounds",
+  "boson bunching",
+  "partial distinguishability",
+  "linear optics",
+  "Yuan-Parrilo constant"
+ ],
+ "notes": "Code (*.py and the CI workflow) is MIT; prose, manuscript, results and records are CC0-1.0.",
+ "related_identifiers": [
+  {
+   "identifier": "https://github.com/ipitchford/permanent-on-top-fixed-rank-rates/tree/v0.1.0-candidate",
+   "relation": "isSupplementTo",
+   "scheme": "url"
+  },
+  {
+   "identifier": "https://evidencepress.org/releases/permanent-on-top-fixed-rank-rates/",
+   "relation": "isDocumentedBy",
+   "scheme": "url"
+  },
+  {
+   "identifier": "10.5281/zenodo.24509057",
+   "relation": "references",
+   "scheme": "doi"
+  },
+  {
+   "identifier": "10.1109/focs.2017.89",
+   "relation": "references",
+   "scheme": "doi"
+  },
+  {
+   "identifier": "10.1088/1367-2630/12/7/073025",
+   "relation": "references",
+   "scheme": "doi"
+  },
+  {
+   "identifier": "10.1103/physrevlett.102.020504",
+   "relation": "references",
+   "scheme": "doi"
+  },
+  {
+   "identifier": "10.13001/1081-3810.3178",
+   "relation": "references",
+   "scheme": "doi"
+  },
+  {
+   "identifier": "10.7153/mia-20-23",
+   "relation": "references",
+   "scheme": "doi"
+  },
+  {
+   "identifier": "10.7153/mia-2018-21-37",
+   "relation": "references",
+   "scheme": "doi"
+  },
+  {
+   "identifier": "10.1016/j.laa.2015.05.031",
+   "relation": "references",
+   "scheme": "doi"
+  },
+  {
+   "identifier": "10.1016/j.jmaa.2004.06.031",
+   "relation": "references",
+   "scheme": "doi"
+  },
+  {
+   "identifier": "10.1016/j.laa.2007.05.019",
+   "relation": "references",
+   "scheme": "doi"
+  },
+  {
+   "identifier": "10.1038/s41566-023-01213-0",
+   "relation": "references",
+   "scheme": "doi"
+  },
+  {
+   "identifier": "10.1016/j.laa.2015.10.034",
+   "relation": "references",
+   "scheme": "doi"
+  },
+  {
+   "identifier": "10.7153/mia-2022-25-01",
+   "relation": "references",
+   "scheme": "doi"
+  },
+  {
+   "identifier": "10.1007/s10107-021-01616-3",
+   "relation": "references",
+   "scheme": "doi"
+  },
+  {
+   "identifier": "10.1515/spma-2016-0030",
+   "relation": "references",
+   "scheme": "doi"
+  },
+  {
+   "identifier": "arXiv:2605.21946",
+   "relation": "references",
+   "scheme": "arxiv"
+  },
+  {
+   "identifier": "arXiv:2611.23269",
+   "relation": "references",
+   "scheme": "arxiv"
+  },
+  {
+   "identifier": "arXiv:2404.10959",
+   "relation": "references",
+   "scheme": "arxiv"
+  },
+  {
+   "identifier": "arXiv:2601.13792",
+   "relation": "references",
+   "scheme": "arxiv"
+  },
+  {
+   "identifier": "arXiv:2607.19499",
+   "relation": "references",
+   "scheme": "arxiv"
+  },
+  {
+   "identifier": "arXiv:2102.13220",
+   "relation": "references",
+   "scheme": "arxiv"
+  }
+ ]
+}
